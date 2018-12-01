@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <list.c>
 //UI
 int main(int argc, char const *argv[])
 {
