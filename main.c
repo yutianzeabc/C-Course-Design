@@ -1,12 +1,15 @@
 #include <ui.c>
 #include <list.c>
+#include <file.c>
 
 int main(int argc, char const *argv[])
-{
+{   
     draw_load_ui();
+    FILE *book_db;
+    book_db=file_open();
     draw_main_ui();
     while (1){
-        char c;
+        char c='x';
         scanf("%c",&c);
         switch(c){
             case 'x':
@@ -20,8 +23,10 @@ int main(int argc, char const *argv[])
                 break;
             case '3':
                 draw_query_ui();
+                break;
             case '4':
                 draw_modify_ui();
+                break;
             case '5':
                 draw_del_ui();
                 break;

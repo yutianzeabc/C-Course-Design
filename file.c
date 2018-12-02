@@ -7,13 +7,13 @@
     # include <stdlib.h>
 #endif
 
-FILE *file_open(){
+FILE *file_open_(){
     FILE *stream_db;
-    stream_db=fopen("books.db","r+");
+    stream_db=fopen("books.db","a+");
     return stream_db;
 }
 
-void file_close(FILE *stream_db){
-    fclose(stream_db);
-    return;
+int file_close(FILE *stream_db){
+    if (fclose(stream_db)==0) return 0;
+    else return 1;
 }
