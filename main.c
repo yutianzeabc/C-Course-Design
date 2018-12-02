@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <ui.c>
 #include <list.c>
 

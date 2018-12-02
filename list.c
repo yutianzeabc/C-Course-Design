@@ -1,5 +1,11 @@
-# include <stdio.h>
-# include <stdlib.h>
+#ifndef __STDIO_H__
+    #define __STDIO_H__
+    # include <stdio.h>
+#endif
+#ifndef __STDLIB_H__
+    #define __STDLIB_H__  
+    # include <stdlib.h>
+#endif
 struct book{
     char regist[20],regist[20],author[20],type[20],publish[20],time[20],price[20];
     struct book *forward,*back;//链表
