@@ -8,12 +8,10 @@
     # include <stdlib.h>
 #endif
 
-//#define __DEBUG_UI__
+#define __DEBUG_UI__
 
 void draw_main_ui(){
     system("cls");
-    system("title 图书信息管理系统");
-    system("color f0");
     printf("*========================================*\n");
     printf("#                                        #\n");
     printf("#            图书信息管理系统            #\n");
@@ -36,6 +34,29 @@ void draw_main_ui(){
     printf("        Please enter your option:");
     return;
 }
+void draw_load_ui(){
+    system("title 图书信息管理系统");
+    system("color f0");
+    printf("*========================================*\n");
+    printf("#                                        #\n");
+    printf("#            图书信息管理系统            #\n");
+    printf("#                                        #\n");
+    printf("*========================================*\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#               Loading...               #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("#                                        #\n");
+    printf("*========================================*\n");
+}
 void draw_input_ui(){
     system("cls");
     printf("Please input a new record with a line (input # to end):\n");
@@ -48,19 +69,19 @@ void draw_output_ui(){
 }
 void draw_query_ui(){
     system("cls");
-    printf("*====================================*\n");
-    printf("#                                    #\n");
-    printf("#          图书信息管理系统          #\n");
-    printf("#                                    #\n");
-    printf("*====================================*\n");
-    printf("#                                    #\n");
-    printf("#              [1] 作者名            #\n");
-    printf("#                                    #\n");
-    printf("#              [2] 书目名            #\n");
-    printf("#                                    #\n");
-    printf("#              [X] 返 回             #\n");
-    printf("#                                    #\n");
-    printf("*====================================*\n");
+    printf("*========================================*\n");
+    printf("#                                        #\n");
+    printf("#            图书信息管理系统            #\n");
+    printf("#                                        #\n");
+    printf("*========================================*\n");
+    printf("#                                        #\n");
+    printf("#                [1] 作者名              #\n");
+    printf("#                                        #\n");
+    printf("#                [2] 书目名              #\n");
+    printf("#                                        #\n");
+    printf("#                [X] 返 回               #\n");
+    printf("#                                        #\n");
+    printf("*========================================*\n");
     return;
 }
 void draw_modify_ui(){
@@ -77,6 +98,7 @@ void draw_del_ui(){
 #ifdef __DEBUG_UI__
 int main(int argc, char const *argv[])
 {
+    draw_load_ui();
     draw_main_ui();
     return 0;
 }   

@@ -3,6 +3,7 @@
 
 int main(int argc, char const *argv[])
 {
+    draw_load_ui();
     draw_main_ui();
     while (1){
         char c;
