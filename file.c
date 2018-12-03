@@ -8,9 +8,7 @@
 #endif
 
 FILE *file_open_(){
-    FILE *stream_db;
-    stream_db=fopen("books.db","a+");
-    return stream_db;
+    return fopen("books.db","a+");
 }
 
 int file_close(FILE *stream_db){

@@ -6,6 +6,9 @@
     #define __STDLIB_H__  
     # include <stdlib.h>
 #endif
+
+//#define __DEBUG_LIST__
+
 struct book{
     char regist[20],regist[20],author[20],type[20],publish[20],time[20],price[20];
     struct book *forward,*back;//链表
@@ -51,3 +54,10 @@ void del(struct book* target){
     free(target);
     return;
 }
+
+#ifdef __DEBUG_LIST__
+int main(int argc, char const *argv[])
+{
+    return 0;
+}   
+#endif

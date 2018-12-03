@@ -8,7 +8,7 @@
     # include <stdlib.h>
 #endif
 
-#define __DEBUG_UI__
+//#define __DEBUG_UI__
 
 void draw_main_ui(){
     system("cls");
@@ -28,7 +28,7 @@ void draw_main_ui(){
     printf("#                                        #\n");
     printf("#                [5] 删 除               #\n");
     printf("#                                        #\n");
-    printf("#                [X] 退 出               #\n");
+    printf("#                [0] 退 出               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
     printf("        Please enter your option:");
@@ -79,7 +79,7 @@ void draw_query_ui(){
     printf("#                                        #\n");
     printf("#                [2] 书目名              #\n");
     printf("#                                        #\n");
-    printf("#                [X] 返 回               #\n");
+    printf("#                [0] 返 回               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
     return;
