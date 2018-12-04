@@ -10,7 +10,7 @@
 //#define __DEBUG_LIST__
 
 struct book{
-    char regist[20],regist[20],author[20],type[20],publish[20],time[20],price[20];
+    char regist[20],author[20],type[20],publish[20],time[20],price[20];
     struct book *forward,*back;//链表
 };
 struct book* form(){
@@ -23,11 +23,11 @@ struct book* form(){
     return start;
 }
 //构建一个空链表，并返回入口
-void combine(struct book *from,struct book *to,struct book *new){
-    from->forward=new;
-    to->back=new;
-    new->back=from;
-    new->forward=to;
+void combine(struct book *from,struct book *to,struct book *new_book){
+    from->forward=new_book;
+    to->back=new_book;
+    new_book->back=from;
+    new_book->forward=to;
     return;
 }
 //插入元素到链表
@@ -39,10 +39,10 @@ struct book* get_end(struct book* start){
     return temp;
 }
 //获取链表的末端
-void push_back(struct book new,struct book* start){
+void push_back(struct book new_book,struct book* start){
     struct book* temp,*n;
     n=(struct book *)malloc(sizeof(struct book));
-    *n=new;
+    *n=new_book;
     temp=get_end(start);
     combine(temp->back,temp,n);
     return;

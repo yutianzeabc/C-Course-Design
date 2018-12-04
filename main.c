@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
                 break;
             case 3:
                 draw_query_ui();
-                int c2=0;   
+                int c2;   
                 scanf("%d",&c2);
                 switch (c2){
                     case 0:
