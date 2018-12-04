@@ -1,3 +1,6 @@
+#Program Datebase
+*.db
+
 # Visual Code
 .vscode/
 

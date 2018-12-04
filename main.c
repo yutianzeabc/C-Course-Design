@@ -6,10 +6,10 @@ int main(int argc, char const *argv[])
 {   
     draw_load_ui();
     FILE *book_db;
-    book_db=file_open();
+    book_db=file_open("books.db","a+");
     draw_main_ui();
     while (1){
-        int c=0;
+        int c;
         scanf("%d",&c);
         switch (c){
             case 0:
@@ -52,6 +52,7 @@ int main(int argc, char const *argv[])
                 draw_main_ui();
         }
     }
+    file_close(book_db);
     return 0;
 }
 
