@@ -12,7 +12,8 @@ int main(int argc, char const *argv[])
         int c;
         scanf("%d",&c);
         switch (c){
-            case 0:
+            case 0: 
+                file_close(book_db);
                 return 0;
             case 1:
                 draw_input_ui();
@@ -23,15 +24,16 @@ int main(int argc, char const *argv[])
                 draw_main_ui();
                 break;
             case 3:
-                draw_query_ui();
-                int c2;   
-                scanf("%d",&c2);
-                switch (c2){
+                draw_query_ui();  
+                scanf("%d",&c);
+                switch (c){
                     case 0:
                         break; 
                     case 1:
+                        draw_query_title_ui();
                         break;
                     case 2:
+                        draw_query_author_ui();
                         break;
                     default:
                         printf("\a");
