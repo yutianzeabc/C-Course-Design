@@ -60,6 +60,7 @@ void del(struct book* target){
     free(target);
     return;
 }
+//删除链表的一个元素
 
 #ifdef __DEBUG_LIST__
 int main(int argc, char const *argv[])

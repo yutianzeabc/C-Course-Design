@@ -8,7 +8,35 @@
     # include <stdlib.h>
 #endif
 
+#ifndef __WINDOWS_H__
+    #define __WINDOWS_H__  
+    # include <windows.h>
+#endif
+
 //#define __DEBUG_UI__
+
+void init_console();
+void draw_main_ui();
+void draw_load_ui();
+void draw_input_ui();
+void draw_output_ui();
+void draw_query_ui();
+void draw_query_author_ui();
+void draw_query_title_ui();
+void draw_modify_ui();
+void draw_del_ui();
+
+void init_console(){
+    HANDLE std_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursor_info;
+    cursor_info.bVisible = 0;
+    cursor_info.dwSize = 1;
+    SetConsoleCursorInfo(std_handle,&cursor_info);
+    system("mode con: cols=42 lines=25");
+    system("title 图书信息管理系统");
+    system("color f0");
+    return;
+}
 
 void draw_main_ui(){
     system("cls");
@@ -31,13 +59,12 @@ void draw_main_ui(){
     printf("#                [0] 退 出               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("        Please enter your option: ");
+    printf("      Please enter your option: ");
     return;
 }
 
 void draw_load_ui(){
-    system("title 图书信息管理系统");
-    system("color f0");
+    init_console();
     printf("*========================================*\n");
     printf("#                                        #\n");
     printf("#            图书信息管理系统            #\n");
@@ -86,7 +113,7 @@ void draw_query_ui(){
     printf("#                [0] 返 回               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("        Please enter your option: ");
+    printf("      Please enter your option: ");
     return;
 }
 
@@ -101,6 +128,7 @@ void draw_query_title_ui(){
     printf("Please input the book title: ");
     return;
 }
+
 void draw_modify_ui(){
     system("cls");
     printf("Please input a book ID: ");
