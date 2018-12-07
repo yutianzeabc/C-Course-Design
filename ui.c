@@ -59,7 +59,7 @@ void draw_main_ui(){
     printf("#                [0] 退 出               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("       Please enter your option:  ");
+    printf("       Please enter your option : ");
     return;
 }
 
@@ -90,7 +90,6 @@ void draw_input_ui(){
     system("cls");
     printf("Please input one new record with one line (Input # to end): \n");
     printf("e.g:登录号#书名#作者名#分类号#出版单位#出版时间#价格\n");
-    system("pause");
     return;
 }
 
@@ -114,7 +113,7 @@ void draw_query_ui(){
     printf("#                [0] 返 回               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("       Please enter your option:  ");
+    printf("       Please enter your option : ");
     return;
 }
 
