@@ -1,11 +1,8 @@
-#ifndef __STDIO_H__
-    #define __STDIO_H__
+#ifndef __STD_H__
+    #define __STD_H__
     # include <stdio.h>
-#endif
-
-#ifndef __STDLIB_H__
-    #define __STDLIB_H__  
     # include <stdlib.h>
+    # include <stdbool.h>
 #endif
 
 //#define __DEBUG_LIST__
