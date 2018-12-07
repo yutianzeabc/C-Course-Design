@@ -15,8 +15,12 @@
 
 //#define __DEBUG_FILE__
 
-FILE *file_open(const char *datebase,const char *mode){
-    return fopen(datebase,mode);
+FILE *file_open_read(){
+    return fopen("books.dat","a+");
+}
+
+FILE *file_open_write(){
+    return fopen("books.dat","w+");
 }
 
 bool file_close(FILE *stream_db){

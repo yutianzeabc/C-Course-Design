@@ -32,7 +32,7 @@ void init_console(){
     cursor_info.bVisible = 0;
     cursor_info.dwSize = 1;
     SetConsoleCursorInfo(std_handle,&cursor_info);
-    system("mode con: cols=42 lines=25");
+    system("mode con: cols=42 lines=22");
     system("title 图书信息管理系统");
     system("color f0");
     return;
@@ -59,12 +59,12 @@ void draw_main_ui(){
     printf("#                [0] 退 出               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("      Please enter your option: ");
+    printf("       Please enter your option:  ");
     return;
 }
 
 void draw_load_ui(){
-    init_console();
+    system("cls");
     printf("*========================================*\n");
     printf("#                                        #\n");
     printf("#            图书信息管理系统            #\n");
@@ -88,8 +88,9 @@ void draw_load_ui(){
 
 void draw_input_ui(){
     system("cls");
-    printf("Please input one new record with one line (Input # to end)\n");
+    printf("Please input one new record with one line (Input # to end): \n");
     printf("e.g:登录号#书名#作者名#分类号#出版单位#出版时间#价格\n");
+    system("pause");
     return;
 }
 
@@ -113,31 +114,31 @@ void draw_query_ui(){
     printf("#                [0] 返 回               #\n");
     printf("#                                        #\n");
     printf("*========================================*\n");
-    printf("      Please enter your option: ");
+    printf("       Please enter your option:  ");
     return;
 }
 
 void draw_query_author_ui(){
     system("cls");
-    printf("Please input the author name: ");
+    printf("Please input the author name: \n");
     return;
 }
 
 void draw_query_title_ui(){
     system("cls");
-    printf("Please input the book title: ");
+    printf("Please input the book title: \n");
     return;
 }
 
 void draw_modify_ui(){
     system("cls");
-    printf("Please input a book ID: ");
+    printf("Please input a book ID: \n");
     return;
 } 
 
 void draw_del_ui(){
     system("cls");
-    printf("Please input a book ID: ");
+    printf("Please input a book ID: \n");
     return;
 } 
 

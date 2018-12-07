@@ -4,9 +4,10 @@
 
 int main(int argc, char const *argv[])
 {   
+    init_console();
     draw_load_ui();
     FILE *book_db;
-    book_db=file_open("books.db","a+");
+    book_db=file_open_read();
     draw_main_ui();
     while (1){
         int c;

@@ -1,5 +1,5 @@
 # Program Datebase
-*.db
+*.dat
 
 # Visual Code
 .vscode/
