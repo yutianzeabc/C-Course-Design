@@ -7,6 +7,10 @@
 
 //#define __DEBUG_FILE__
 
+FILE *file_open_read();//打开文件为读取状态
+FILE *file_open_write();//打开文件为覆写状态
+bool file_close(FILE *stream_db);//关闭文件
+
 FILE *file_open_read(){
     return fopen("books.dat","a+");
 }

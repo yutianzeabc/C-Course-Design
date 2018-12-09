@@ -13,18 +13,18 @@
 
 //#define __DEBUG_UI__
 
-void init_console();
-void set_console_pos();
-void set_console_cursor();
-void draw_main_ui();
-void draw_load_ui();
-void draw_input_ui();
-void draw_output_ui();
-void draw_query_ui();
-void draw_query_author_ui();
-void draw_query_title_ui();
-void draw_modify_ui();
-void draw_del_ui();
+void init_console();//初始化控制台
+void set_console_pos();//设置控制台位置
+void set_console_cursor();//设置控制台光标状态
+void draw_main_ui();//绘制主UI
+void draw_load_ui();//绘制读取UI
+void draw_input_ui();//绘制输入UI
+void draw_output_ui();//绘制输出UI
+void draw_query_ui();//绘制查询UI
+void draw_query_author_ui();//绘制查询子UI
+void draw_query_title_ui();//绘制查询子UI
+void draw_modify_ui();//绘制修改UI
+void draw_del_ui();//绘制删除UI
 
 void init_console(){
     system("mode con: cols=46 lines=21");
