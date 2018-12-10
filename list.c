@@ -76,8 +76,12 @@ void take_in(struct book* start){
     struct book *t;
     t=(struct book *)malloc(sizeof(struct book));
     initialize(t);
+<<<<<<< HEAD
     int i=0;
     for(i=0;i<1;i++){
+=======
+    for(int i=0;i<7;i++){
+>>>>>>> 88a746854f124d6862d1f83c0a2eb6307624414d
         draw_input_sub_ui(i);
         gets(t->quality[i]);
     }
