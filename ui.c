@@ -1,17 +1,17 @@
 #ifndef __STD_H__
     #define __STD_H__
-    # include <stdio.h>
-    # include <stdlib.h>
-    # include <stdbool.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <stdbool.h>
 #endif
 
 #ifndef __WIN_H__
     #define __WIN_H__  
-    # include <windows.h>
-    # include <winuser.h>
+    #include <windows.h>
+    #include <winuser.h>
 #endif
 
-#define __DEBUG_UI__
+//#define __DEBUG_UI__
 
 void init_console();//初始化控制台
 void set_console_pos();//设置控制台位置
@@ -25,7 +25,7 @@ void draw_output_sub_ui(int i);//绘制输出子UI
 void draw_query_ui();//绘制查询UI
 void draw_query_sub_ui(int i);//绘制查询子UI
 void draw_modify_ui();//绘制修改UI
-void draw_modify_sub_ui();//绘制修改子UI
+void draw_modify_sub_ui(int i);//绘制修改子UI
 void draw_del_ui();//绘制删除UI
 void draw_del_sub_ui();//绘制删除子UI
 
@@ -254,7 +254,6 @@ int main(int argc, char const *argv[])
 {
     init_console();
     draw_main_ui();
-    draw_query_ui();
     getchar();
     return 0;
 }   
