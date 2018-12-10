@@ -19,12 +19,15 @@ void set_console_cursor();//设置控制台光标状态
 void draw_main_ui();//绘制主UI
 void draw_load_ui();//绘制读取UI
 void draw_input_ui();//绘制输入UI
+void draw_input_sub_ui(int i);//绘制输入子UI
 void draw_output_ui();//绘制输出UI
+void draw_output_sub_ui(int i);//绘制输出子UI
 void draw_query_ui();//绘制查询UI
-void draw_query_author_ui();//绘制查询子UI
-void draw_query_title_ui();//绘制查询子UI
+void draw_query_sub_ui(int i);//绘制查询子UI
 void draw_modify_ui();//绘制修改UI
+void draw_modify_sub_ui();//绘制修改子UI
 void draw_del_ui();//绘制删除UI
+void draw_del_sub_ui();//绘制删除子UI
 
 void init_console(){
     system("mode con: cols=46 lines=21");
@@ -102,14 +105,68 @@ void draw_load_ui(){
 
 void draw_input_ui(){
     system("cls");
-    printf("Please input one new record with one line (Input # to end): \n");
-    printf("e.g:登录号#书名#作者名#分类号#出版单位#出版时间#价格\n");
     return;
+}
+
+void draw_input_sub_ui(int i){
+    switch (i){
+        case 0:
+            printf("登录号: ");
+            return;
+        case 1:
+            printf("书名: ");
+            return;
+        case 2:
+            printf("作者名: ");
+            return;
+        case 3:
+            printf("分类号: ");
+            return;
+        case 4:
+            printf("出版单位: ");
+            return;
+        case 5:
+            printf("出版时间: ");
+            return;
+        case 6:
+            printf("价格: ");
+            return;
+        default:
+            exit(1);
+    }
 }
 
 void draw_output_ui(){
     system("cls");
     return;
+}
+
+void draw_output_sub_ui(int i){
+    switch (i){
+        case 0:
+            printf("登录号: ");
+            return;
+        case 1:
+            printf("书名：");
+            return;
+        case 2:
+            printf("作者名: ");
+            return;
+        case 3:
+            printf("分类号: ");
+            return;
+        case 4:
+            printf("出版单位: ");
+            return;
+        case 5:
+            printf("出版时间: ");
+            return;
+        case 6:
+            printf("价格: ");
+            return;
+        default:
+            exit(1);
+    }
 }
 
 void draw_query_ui(){
@@ -131,29 +188,66 @@ void draw_query_ui(){
     return;
 }
 
-void draw_query_author_ui(){
+void draw_query_sub_ui(int i){
     system("cls");
-    printf("Please input the author name: \n");
-    return;
-}
-
-void draw_query_title_ui(){
-    system("cls");
-    printf("Please input the book title: \n");
+    switch (i){
+        case 0:
+            printf("请输入图书作者名: \n");
+            return;
+        case 1:
+            printf("请输入图书标题: \n");
+            return;
+        default:
+            exit(1);
+    }
+    
     return;
 }
 
 void draw_modify_ui(){
     system("cls");
-    printf("Please input a book ID: \n");
+    printf("请输入图书登录号: \n");
     return;
 } 
 
+void draw_modify_sub_ui(int i){
+    switch (i){
+        case 0:
+            printf("登录号: ");
+            return;
+        case 1:
+            printf("书名: ");
+            return;
+        case 2:
+            printf("作者名: ");
+            return;
+        case 3:
+            printf("分类号: ");
+            return;
+        case 4:
+            printf("出版单位: ");
+            return;
+        case 5:
+            printf("出版时间: ");
+            return;
+        case 6:
+            printf("价格: ");
+            return;
+        default:
+            exit(1);
+    }
+}
+
 void draw_del_ui(){
     system("cls");
-    printf("Please input a book ID: \n");
+    printf("请输入图书登录号: \n");
     return;
-} 
+}
+
+void draw_del_sub_ui(){
+    printf("确认删除(Y/N): ");
+    return;
+}
 
 #ifdef __DEBUG_UI__
 int main(int argc, char const *argv[])

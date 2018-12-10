@@ -76,7 +76,7 @@ void take_in(struct book* start){
     t=(struct book *)malloc(sizeof(struct book));
     initialize(t);
     for(int i=0;i<7;i++){
-//        draw_input_sub_ui(i);
+        draw_input_sub_ui(i);
         gets(t->quality[i]);
     }
     push_back(t,start);
