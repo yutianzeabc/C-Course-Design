@@ -31,10 +31,10 @@ int main(int argc, char const *argv[])
                     case 0:
                         break; 
                     case 1:
-                        draw_query_sub_ui(1);
+                        draw_query_sub_ui(0);
                         break;
                     case 2:
-                        draw_query_sub_ui(2);
+                        draw_query_sub_ui(1);
                         break;
                     default:
                         printf("\a");

@@ -11,7 +11,7 @@
     # include <winuser.h>
 #endif
 
-//#define __DEBUG_UI__
+#define __DEBUG_UI__
 
 void init_console();//初始化控制台
 void set_console_pos();//设置控制台位置
@@ -177,9 +177,9 @@ void draw_query_ui(){
     printf("#                                            #\n");
     printf("*============================================*\n");
     printf("#                                            #\n");
-    printf("#                  [1] 书目名                #\n");
+    printf("#                  [1] 标 题                 #\n");
     printf("#                                            #\n");
-    printf("#                  [2] 作者名                #\n");
+    printf("#                  [2] 作 者                 #\n");
     printf("#                                            #\n");
     printf("#                  [0] 返 回                 #\n");
     printf("#                                            #\n");
@@ -192,10 +192,10 @@ void draw_query_sub_ui(int i){
     system("cls");
     switch (i){
         case 0:
-            printf("请输入图书作者名: \n");
+            printf("请输入图书标题: \n");
             return;
         case 1:
-            printf("请输入图书标题: \n");
+            printf("请输入图书作者: \n");
             return;
         default:
             exit(1);
@@ -254,6 +254,7 @@ int main(int argc, char const *argv[])
 {
     init_console();
     draw_main_ui();
+    draw_query_ui();
     getchar();
     return 0;
 }   
