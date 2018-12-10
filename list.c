@@ -3,6 +3,7 @@
     # include <stdio.h>
     # include <stdlib.h>
     # include <stdbool.h>
+    # include <string.h>
 #endif
 
 //#define __DEBUG_LIST__
@@ -14,13 +15,13 @@ struct book{
 };
 
 void initialize(struct book* temp){
-    temp->quality[0]=&(temp->regist);
-    temp->quality[1]=&(temp->name);
-    temp->quality[2]=&(temp->author);
-    temp->quality[3]=&(temp->type);
-    temp->quality[4]=&(temp->publish);
-    temp->quality[5]=&(temp->publish_time);
-    temp->quality[6]=&(temp->price);
+    temp->quality[0]=(temp->regist);
+    temp->quality[1]=(temp->name);
+    temp->quality[2]=(temp->author);
+    temp->quality[3]=(temp->type);
+    temp->quality[4]=(temp->publish);
+    temp->quality[5]=(temp->publish_time);
+    temp->quality[6]=(temp->price);
     return;
 }
 
@@ -75,27 +76,78 @@ void take_in(struct book* start){
     struct book *t;
     t=(struct book *)malloc(sizeof(struct book));
     initialize(t);
-    for(int i=0;i<7;i++){
-//        draw_input_sub_ui(i);
+    int i=0;
+    for(i=0;i<1;i++){
+        draw_input_sub_ui(i);
         gets(t->quality[i]);
     }
     push_back(t,start);
     return;
 }
 //添加元素
-/*
-void merge_sort(struct book* start,int q,int len){
-    for(int i=2;i<=len;i*=2){
-        for(int j=0;j<i;j+=1){
-
+void show_list(struct book* start){
+    start=start->forward;
+    while(start->forward!=NULL){
+        int j=0;
+        for(j=0;j<1;j++){
+            printf("%s ",start->quality[j]);
         }
+        printf("\n");
+        start=start->forward;
     }
+    return;
 }
-*/
+//
+void swap(struct book* p,struct book *q){
+    struct book* temp;
+    temp=(struct book*)malloc(sizeof(struct book));
+    memcpy(temp,p,sizeof(struct book));
+    initialize(temp);
+    temp->forward = q->forward;
+    temp->back = q->back;
+    q->forward = p->forward;
+    q->back = p->back;
+    memcpy(p,q,sizeof(struct book));//*p = *q;
+    initialize(p);
+    memcpy(q,temp,sizeof(struct book));//*q = temp;
+    initialize(q);
+    free(temp);
+    return;
+}
+
+void quick_sort(struct book *start,struct book *end,int i){
+    if(start->back!=end && start!=end){
+        struct book *temp=end,*p=start->back,*q=start;
+        while(q!=end){
+            if(strcmp(q->quality[i],temp->quality[i])<=0){
+                p=p->forward;
+                swap(p,q);
+            }
+            q=q->forward;
+        }
+        p=p->forward;
+        swap(p,temp);
+        quick_sort(start,p->back,i);
+        quick_sort(p->forward,end,i);
+    }
+    return;
+}
 
 #ifdef __DEBUG_LIST__
+#include "ui.c"
 int main(int argc, char const *argv[])
 {
+    struct book *start,*end,*t,*t1;
+    start=form_new();
+    int i=0;
+    for(i=0;i<10;i++){
+        take_in(start);
+    }
+    end=get_end(start);
+    t=start->forward;t1=end->back;
+    quick_sort(t,t1,0);
+    show_list(start);
+    getchar();
     return 0;
 }   
 #endif
