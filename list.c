@@ -18,7 +18,7 @@ struct book{
     char* quality[7];
 };
 
-void initialize(struct book* temp){
+void init_book(struct book* temp){
     temp->quality[0]=(temp->regist);
     temp->quality[1]=(temp->name);
     temp->quality[2]=(temp->author);
@@ -79,7 +79,7 @@ void delete(struct book* target){
 void take_in(struct book* start){
     struct book *t;
     t=(struct book *)malloc(sizeof(struct book));
-    initialize(t);
+    init_book(t);
     int i;
     for(i=0;i<7;i++){
         draw_input_sub_ui(i);
@@ -103,19 +103,17 @@ void show_list(struct book* start){
 }
 //
 void swap(struct book* p,struct book *q){
-    struct book* temp;
-    temp=(struct book*)malloc(sizeof(struct book));
-    memcpy(temp,p,sizeof(struct book));
-    initialize(temp);
-    temp->forward = q->forward;
-    temp->back = q->back;
+    struct book temp;
+    memcpy(&temp,p,sizeof(struct book));
+    init_book(&temp);
+    temp.forward = q->forward;
+    temp.back = q->back;
     q->forward = p->forward;
     q->back = p->back;
     memcpy(p,q,sizeof(struct book));//*p = *q;
-    initialize(p);
-    memcpy(q,temp,sizeof(struct book));//*q = temp;
-    initialize(q);
-    free(temp);
+    init_book(p);
+    memcpy(q,&temp,sizeof(struct book));//*q = temp;
+    init_book(q);
     return;
 }
 
