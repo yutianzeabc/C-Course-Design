@@ -11,9 +11,10 @@
     #include <winuser.h>
 #endif
 
-//#define __DEBUG_UI__
+#define __DEBUG_UI__
 
 void init_console();//初始化控制台
+void clear_console();//清除控制台
 void set_console_pos();//设置控制台位置
 void set_console_cursor();//设置控制台光标状态
 void draw_main_ui();//绘制主UI
@@ -38,6 +39,11 @@ void init_console(){
     return;
 }
 
+void clear_console(){
+    system("cls");
+    return;
+}
+
 void set_console_pos(){
     RECT rect;
     HWND hwnd=FindWindow("ConsoleWindowClass",NULL);
@@ -56,55 +62,55 @@ void set_console_cursor(){
 }
 
 void draw_main_ui(){
-    system("cls");
+    clear_console();
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#              图书信息管理系统              #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*               图书信息管理系统             *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#                  [1] 录 入                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [2] 输 出                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [3] 查 询                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [4] 修 改                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [5] 删 除                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [0] 退 出                 #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*                  [1] 录 入                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [2] 输 出                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [3] 查 询                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [4] 修 改                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [5] 删 除                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [0] 退 出                 *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
     printf("         Please enter your option : ");
     return;
 }
 
 void draw_load_ui(){
-    system("cls");
+    clear_console();
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#              图书信息管理系统              #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*               图书信息管理系统             *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                 Loading ...                #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                 Loading ...                *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
 }
 
 void draw_input_ui(){
-    system("cls");
+    clear_console();
     return;
 }
 
@@ -137,7 +143,7 @@ void draw_input_sub_ui(int i){
 }
 
 void draw_output_ui(){
-    system("cls");
+    clear_console();
     return;
 }
 
@@ -170,26 +176,26 @@ void draw_output_sub_ui(int i){
 }
 
 void draw_query_ui(){
-    system("cls");
+    clear_console();
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#              图书信息管理系统              #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*               图书信息管理系统             *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
-    printf("#                                            #\n");
-    printf("#                  [1] 标 题                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [2] 作 者                 #\n");
-    printf("#                                            #\n");
-    printf("#                  [0] 返 回                 #\n");
-    printf("#                                            #\n");
+    printf("*                                            *\n");
+    printf("*                  [1] 标 题                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [2] 作 者                 *\n");
+    printf("*                                            *\n");
+    printf("*                  [0] 返 回                 *\n");
+    printf("*                                            *\n");
     printf("*============================================*\n");
     printf("         Please enter your option : ");
     return;
 }
 
 void draw_query_sub_ui(int i){
-    system("cls");
+    clear_console();
     switch (i){
         case 0:
             printf("请输入图书标题: \n");
@@ -205,7 +211,7 @@ void draw_query_sub_ui(int i){
 }
 
 void draw_modify_ui(){
-    system("cls");
+    clear_console();
     printf("请输入图书登录号: \n");
     return;
 } 
@@ -239,7 +245,7 @@ void draw_modify_sub_ui(int i){
 }
 
 void draw_del_ui(){
-    system("cls");
+    clear_console();
     printf("请输入图书登录号: \n");
     return;
 }
