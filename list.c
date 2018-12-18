@@ -12,9 +12,13 @@
 
 //#define __DEBUG_LIST__
 
+#ifdef __DEBUG_LIST__
+    #include "ui.c"
+#endif
+
 struct book{
     char regist[20],name[20],author[20],type[20],publish[20],publish_time[20],price[20];
-    struct book *forward,*back;//é“¾è¡¨
+    struct book *forward,*back;//Á´±í
     char* quality[7];
 };
 
@@ -40,7 +44,7 @@ struct book* form_new(){
     end->forward=NULL;
     return start;
 }
-//æž„å»ºä¸€ä¸ªç©ºé“¾è¡¨ï¼Œå¹¶è¿”å›žå…¥å£
+//¹¹½¨Ò»¸ö¿ÕÁ´±í£¬²¢·µ»ØÈë¿Ú
 
 void combine(struct book *from,struct book *to,struct book *new_book){
     from->forward=new_book;
@@ -49,7 +53,7 @@ void combine(struct book *from,struct book *to,struct book *new_book){
     new_book->forward=to;
     return;
 }
-//æ’å…¥å…ƒç´ åˆ°é“¾è¡¨
+//²åÈëÔªËØµ½Á´±í
 
 struct book* get_end(struct book* start){
     struct book* temp=start->forward;
@@ -58,7 +62,7 @@ struct book* get_end(struct book* start){
     }
     return temp;
 }
-//èŽ·å–é“¾è¡¨çš„æœ«ç«¯
+//»ñÈ¡Á´±íµÄÄ©¶Ë
 
 void push_back(struct book* new_book,struct book* start){
     struct book* temp;
@@ -66,7 +70,7 @@ void push_back(struct book* new_book,struct book* start){
     combine(temp->back,temp,new_book);
     return;
 }
-//åœ¨æœ«å°¾æ·»åŠ ä¸€ä¸ªå…ƒç´ 
+//ÔÚÄ©Î²Ìí¼ÓÒ»¸öÔªËØ
 
 void delete(struct book* target){
     (target->back)->forward=target->forward;
@@ -74,7 +78,7 @@ void delete(struct book* target){
     free(target);
     return;
 }
-//åˆ é™¤é“¾è¡¨çš„ä¸€ä¸ªå…ƒç´ 
+//É¾³ýÁ´±íµÄÒ»¸öÔªËØ
 
 void take_in(struct book* start){
     struct book *t;
@@ -88,7 +92,7 @@ void take_in(struct book* start){
     push_back(t,start);
     return;
 }
-//æ·»åŠ å…ƒç´ 
+//Ìí¼ÓÔªËØ
 void show_list(struct book* start){
     start=start->forward;
     while(start->forward!=NULL){
@@ -136,7 +140,6 @@ void quick_sort(struct book *start,struct book *end,int i){
 }
 
 #ifdef __DEBUG_LIST__
-#include "ui.c"
 int main(int argc, char const *argv[])
 {
     struct book *start,*end,*t,*t1;
