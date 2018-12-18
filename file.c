@@ -7,29 +7,59 @@
 
 //#define __DEBUG_FILE__
 
-FILE *file_open_read();//æ‰“å¼€æ–‡ä»¶ä¸ºè¯»å–çŠ¶æ€
-FILE *file_open_write();//æ‰“å¼€æ–‡ä»¶ä¸ºè¦†å†™çŠ¶æ€
-bool file_close(FILE *stream_db);//å…³é—­æ–‡ä»¶
+#ifdef __DEBUG_FILE__
+    #include "ui.c"
+    #include "list.c"
+#endif
+
+FILE *file_open_read();//´ò¿ªÎÄ¼þÎª¶ÁÈ¡×´Ì¬
+FILE *file_open_write();//´ò¿ªÎÄ¼þÎª¸²Ð´×´Ì¬
+bool file_close(FILE *stream);//¹Ø±ÕÎÄ¼þ
+struct book *file_on_read(FILE *stream);//¶ÁÈ¡ÎÄ¼þ
+bool file_on_write(struct book *begin,FILE *stream);//Ð´ÈëÎÄ¼þ
 
 FILE *file_open_read(){
-    return fopen("books.dat","a+");
+    return fopen("books.dat","r+b");
 }
 
 FILE *file_open_write(){
-    return fopen("books.dat","w+");
+    return fopen("books.dat","w+b");
 }
 
-bool file_close(FILE *stream_db){
-    if (fclose(stream_db)==0) return true;
+bool file_close(FILE *stream){
+    if (fclose(stream)==0) return true;
     else return false;
+}
+
+struct book *file_on_read(FILE *stream){
+    struct book *begin=form_new();
+    while (1){
+        struct book *buffer=(struct book *)malloc(sizeof(struct book));
+        if (fread(buffer,sizeof(struct book),1,stream)){
+            push_back(buffer,begin);
+        }
+        else {
+            free(buffer);
+            break;
+        }
+    }
+    return begin;
+}
+
+bool file_on_write(struct book *begin,FILE *stream){
+    struct book *buffer=begin;
+    while (buffer!=NULL){
+        if (fwrite(buffer,sizeof(struct book),1,stream)==0) return false;
+        buffer=buffer->back;
+    }
+    return true;
 }
 
 #ifdef __DEBUG_FILE__
 int main(int argc, char const *argv[])
 {
     FILE *book_db;
-    book_db=file_open("books.db","a+");
+    book_db=file_open_read();
     return 0;
 }
-
 #endif
