@@ -5,14 +5,13 @@
     # include <stdbool.h>
 #endif
 
-#define __DEBUG_FILE__
+//#define __DEBUG_FILE__
 
 #ifdef __DEBUG_FILE__
     #include "ui.c"
     #include "list.c"
 #endif
-
-int index;
+extern int index;
 
 FILE *file_open_read();//打开文件为读取状态
 FILE *file_open_write();//打开文件为覆写状态

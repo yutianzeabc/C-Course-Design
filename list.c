@@ -15,7 +15,7 @@
 #ifdef __DEBUG_LIST__
     #include "ui.c"
 #endif
-
+extern int index;
 struct book{
     char regist[20],name[20],author[20],type[20],publish[20],publish_time[20],price[20];
     struct book *forward,*back;//Á´±í
@@ -86,20 +86,20 @@ void take_in(struct book* start){
     init_book(t);
     int i;
     for(i=0;i<7;i++){
-        draw_input_sub_ui(i);
         if(i==0){
             for(int i=0;i<20;i++){
                 t->regist[i]='0';
             }
             int ttt,j=0;
-            scanf("%d",&ttt);
+            ttt=index;
             while(ttt!=0){
-                t->regist[19-j]=ttt%10;
+                t->regist[19-j]=ttt%10+'0';
                 ttt/=10;
             }
             index++;
             continue;
         }
+        draw_input_sub_ui(i);
         gets(t->quality[i]);
     }
     push_back(t,start);
@@ -134,12 +134,30 @@ void swap(struct book* p,struct book *q){
     init_book(q);
     return;
 }
-
+int cmp(char a[],char b[]){
+    int an=0,bn=0;
+    for(int i=19;i>=0;i--){
+        an+=(a[i]-'0')*pow(10,19-i);
+        bn+=(b[i]-'0')*pow(10,19-i);
+    }
+    return an<bn;
+}
+int cal(char a[]){
+    int an=0;
+    for(int i=19;i>=0;i--){
+        an+=(a[i]-'0')*pow(10,19-i);
+    }
+    return an;
+}
 void quick_sort(struct book *start,struct book *end,int i){
     if(start->back!=end && start!=end){
         struct book *temp=end,*p=start->back,*q=start;
         while(q!=end){
-            if(strcmp(q->quality[i],temp->quality[i])<=0){
+            if(strcmp(q->quality[i],temp->quality[i])<=0 && i!=0){
+                p=p->forward;
+                swap(p,q);
+            }
+            else if(i==0 && cmp(q->quality[i],temp->quality[i])<=0){
                 p=p->forward;
                 swap(p,q);
             }
@@ -153,11 +171,56 @@ void quick_sort(struct book *start,struct book *end,int i){
     return;
 }
 
-struct book* search_name(struct book* start){
+struct book* search_name(struct book* start,char in[]){
     start=start->forward;
-    while(strcmp(start->name!=))
+    while(strcmp(start->name,in)!=0){
+        if(start->forward==NULL){
+            start=start->forward;
+            break;
+        }
+        start=start->forward;
+    }
+    return start;
 }
-
+struct book* search_author(struct book* start,char in[]){
+    start=start->forward;
+    while(strcmp(start->author,in)!=0){
+        if(start->forward==NULL){
+            start=start->forward;
+            break;
+        }
+        start=start->forward;
+    }
+    return start;
+}
+struct book* search_num_str(struct book* start,char in[]){
+    start=start->forward;
+    while(strcmp(start->regist,in)!=0){
+        if(start->forward==NULL){
+            start=start->forward;
+            break;
+        }
+        start=start->forward;
+    }
+    return start;
+}
+struct book* search_num(struct book* start,int n){
+    start=start->forward;
+    while(cal(start->regist)!=n){
+        if(start->forward==NULL){
+            start=start->forward;
+            break;
+        }
+        start=start->forward;
+    }
+    return start;
+}
+void show_unit(struct book* t){
+    for(int i=0;i<7;i++){
+        printf("%s\n",t->quality[i]);
+    }
+    return;
+}
 #ifdef __DEBUG_LIST__
 int main(int argc, char const *argv[])
 {

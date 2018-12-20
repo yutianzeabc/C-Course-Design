@@ -11,7 +11,7 @@
     #include <winuser.h>
     #include <conio.h>
 #endif
-
+extern int index;
 //#define __DEBUG_UI__
 
 void init_console();//初始化控制台

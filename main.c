@@ -1,7 +1,7 @@
 #include "ui.c"
 #include "list.c"
 #include "file.c"
-
+int index=0;
 int main(int argc, char const *argv[])
 {   
     init_console();
@@ -17,6 +17,8 @@ int main(int argc, char const *argv[])
     }
     draw_main_ui();
     while (true){
+        struct book* ta,*ttt1,*ttt;
+        char n[20],s[20];
         int choice=-1;
         fflush(stdin);
         scanf("%d",&choice);
@@ -39,7 +41,7 @@ int main(int argc, char const *argv[])
             case 2:
                 draw_output_ui();
                 show_list(start);
-                printf("鎸変换鎰忛敭杩斿洖...");
+                printf("按任意键返回...");
                 getch();
                 draw_main_ui();
                 break;
@@ -60,10 +62,21 @@ int main(int argc, char const *argv[])
                             break; 
                         case 1:
                             draw_query_sub_ui(0);
-                            
+                            scanf("%s",n);
+                            ta=search_name(start,n);
+                            if(ta==NULL){
+                                printf("shit!\n");
+                            }
+                            else show_unit(ta);
                             break;
                         case 2:
                             draw_query_sub_ui(1);
+                            scanf("%s",n);
+                            ta=search_author(start,n);
+                            if(ta==NULL){
+                                printf("shit!\n");
+                            }
+                            else show_unit(ta);
                             break;
                         default:
                             printf("\a");
@@ -74,10 +87,26 @@ int main(int argc, char const *argv[])
                 break;
             case 4:
                 draw_modify_ui();
+                scanf("%s",s);
+                ttt=search_num_str(start,s);
+                for(int i=1;i<7;i++){
+                    draw_input_sub_ui(i);
+                    char u[20];
+                    scanf("%s",u);
+                    strcpy(ttt->quality[i],u);
+                }
                 draw_main_ui();
                 break;
             case 5:
                 draw_del_ui();
+                scanf("%s",s);
+                ttt1=search_num_str(start,s);
+                for(int i=1;i<7;i++){
+                    draw_input_sub_ui(i);
+                    char u[20];
+                    scanf("%s",u);
+                    strcpy(ttt1->quality[i],u);
+                }
                 draw_main_ui();
                 break;
             default:
