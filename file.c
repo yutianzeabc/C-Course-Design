@@ -5,18 +5,20 @@
     # include <stdbool.h>
 #endif
 
-//#define __DEBUG_FILE__
+#define __DEBUG_FILE__
 
 #ifdef __DEBUG_FILE__
     #include "ui.c"
     #include "list.c"
 #endif
 
-FILE *file_open_read();//´ò¿ªÎÄ¼þÎª¶ÁÈ¡×´Ì¬
-FILE *file_open_write();//´ò¿ªÎÄ¼þÎª¸²Ð´×´Ì¬
-bool file_close(FILE *stream);//¹Ø±ÕÎÄ¼þ
-struct book *file_on_read(FILE *stream);//¶ÁÈ¡ÎÄ¼þ
-bool file_on_write(struct book *begin,FILE *stream);//Ð´ÈëÎÄ¼þ
+int index;
+
+FILE *file_open_read();//æ‰“å¼€æ–‡ä»¶ä¸ºè¯»å–çŠ¶æ€
+FILE *file_open_write();//æ‰“å¼€æ–‡ä»¶ä¸ºè¦†å†™çŠ¶æ€
+bool file_close(FILE *stream);//å…³é—­æ–‡ä»¶
+struct book *file_on_read(FILE *stream);//è¯»å–æ–‡ä»¶
+bool file_on_write(struct book *begin,FILE *stream);//å†™å…¥æ–‡ä»¶
 
 FILE *file_open_read(){
     return fopen("books.dat","r+b");
@@ -33,7 +35,8 @@ bool file_close(FILE *stream){
 
 struct book *file_on_read(FILE *stream){
     struct book *begin=form_new();
-    while (1){
+    fread(&index,sizeof(int),1,stream);
+    while (true){
         struct book *buffer=(struct book *)malloc(sizeof(struct book));
         if (fread(buffer,sizeof(struct book),1,stream)){
             push_back(buffer,begin);
@@ -48,6 +51,7 @@ struct book *file_on_read(FILE *stream){
 
 bool file_on_write(struct book *begin,FILE *stream){
     struct book *buffer=begin;
+    fwrite(&index,sizeof(int),1,stream);
     while (buffer!=NULL){
         if (fwrite(buffer,sizeof(struct book),1,stream)==0) return false;
         buffer=buffer->back;

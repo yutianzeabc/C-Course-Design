@@ -6,27 +6,45 @@ int main(int argc, char const *argv[])
 {   
     init_console();
     draw_load_ui();
-    FILE *book_db;
-    book_db=file_open_read();
+    FILE *fp;
+    struct book *start;
+    fp=file_open_read();
+    if(fp!=NULL){
+        start=file_on_read(fp);
+    }
+    else{
+        start=form_new();
+    }
     draw_main_ui();
-    while (1){
+    while (true){
         int choice=-1;
         fflush(stdin);
         scanf("%d",&choice);
         switch (choice){
             case 0: 
-                file_close(book_db);
+                file_close(fp);
                 return 0;
             case 1:
                 draw_input_ui();
+                int tiao=-1;
+                while(tiao==-1){
+                    fflush(stdin);
+                    scanf("%d",&tiao);
+                }
+                for(int i=0;i<tiao;i++){
+                    take_in(start);
+                }
                 draw_main_ui();
                 break;
             case 2:
                 draw_output_ui();
+                show_list(start);
+                printf("按任意键返回...");
+                getch();
                 draw_main_ui();
                 break;
             case 3:
-                draw_query_ui();  
+                draw_query_ui(); 
                 choice=-1;
                 fflush(stdin);
                 scanf("%d",&choice);
@@ -42,6 +60,7 @@ int main(int argc, char const *argv[])
                             break; 
                         case 1:
                             draw_query_sub_ui(0);
+                            
                             break;
                         case 2:
                             draw_query_sub_ui(1);
@@ -66,7 +85,7 @@ int main(int argc, char const *argv[])
                 draw_main_ui();
         }
     }
-    file_close(book_db);
+    file_close(fp);
     return 0;
 }
 

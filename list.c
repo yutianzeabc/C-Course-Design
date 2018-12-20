@@ -87,6 +87,19 @@ void take_in(struct book* start){
     int i;
     for(i=0;i<7;i++){
         draw_input_sub_ui(i);
+        if(i==0){
+            for(int i=0;i<20;i++){
+                t->regist[i]='0';
+            }
+            int ttt,j=0;
+            scanf("%d",&ttt);
+            while(ttt!=0){
+                t->regist[19-j]=ttt%10;
+                ttt/=10;
+            }
+            index++;
+            continue;
+        }
         gets(t->quality[i]);
     }
     push_back(t,start);
@@ -97,8 +110,9 @@ void show_list(struct book* start){
     start=start->forward;
     while(start->forward!=NULL){
         int j=0;
-        for(j=0;j<1;j++){
-            printf("%s ",start->quality[j]);
+        for(j=0;j<7;j++){
+            draw_output_sub_ui(j);
+            printf("%s\n",start->quality[j]);
         }
         printf("\n");
         start=start->forward;
@@ -137,6 +151,11 @@ void quick_sort(struct book *start,struct book *end,int i){
         quick_sort(p->forward,end,i);
     }
     return;
+}
+
+struct book* search_name(struct book* start){
+    start=start->forward;
+    while(strcmp(start->name!=))
 }
 
 #ifdef __DEBUG_LIST__
