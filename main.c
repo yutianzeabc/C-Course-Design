@@ -32,6 +32,7 @@ int main(int argc, char const *argv[])
                 while(tiao==-1){
                     fflush(stdin);
                     scanf("%d",&tiao);
+                    fflush(stdin);
                 }
                 for(int i=0;i<tiao;i++){
                     take_in(start);
@@ -62,7 +63,7 @@ int main(int argc, char const *argv[])
                             break; 
                         case 1:
                             draw_query_sub_ui(0);
-                            scanf("%s",n);
+                            gets(n);
                             ta=search_name(start,n);
                             if(ta==NULL){
                                 printf("shit!\n");
@@ -71,7 +72,7 @@ int main(int argc, char const *argv[])
                             break;
                         case 2:
                             draw_query_sub_ui(1);
-                            scanf("%s",n);
+                            gets(n);
                             ta=search_author(start,n);
                             if(ta==NULL){
                                 printf("shit!\n");
@@ -87,12 +88,12 @@ int main(int argc, char const *argv[])
                 break;
             case 4:
                 draw_modify_ui();
-                scanf("%s",s);
+                gets(s);
                 ttt=search_num_str(start,s);
                 for(int i=1;i<7;i++){
                     draw_input_sub_ui(i);
                     char u[20];
-                    scanf("%s",u);
+                    gets(u);
                     strcpy(ttt->quality[i],u);
                 }
                 draw_main_ui();
@@ -104,7 +105,7 @@ int main(int argc, char const *argv[])
                 for(int i=1;i<7;i++){
                     draw_input_sub_ui(i);
                     char u[20];
-                    scanf("%s",u);
+                    gets(u);
                     strcpy(ttt1->quality[i],u);
                 }
                 draw_main_ui();

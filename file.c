@@ -13,11 +13,11 @@
 #endif
 extern int index;
 
-FILE *file_open_read();//æ‰“å¼€æ–‡ä»¶ä¸ºè¯»å–çŠ¶æ€
-FILE *file_open_write();//æ‰“å¼€æ–‡ä»¶ä¸ºè¦†å†™çŠ¶æ€
-bool file_close(FILE *stream);//å…³é—­æ–‡ä»¶
-struct book *file_on_read(FILE *stream);//è¯»å–æ–‡ä»¶
-bool file_on_write(struct book *begin,FILE *stream);//å†™å…¥æ–‡ä»¶
+FILE *file_open_read();//´ò¿ªÎÄ¼şÎª¶ÁÈ¡×´Ì¬
+FILE *file_open_write();//´ò¿ªÎÄ¼şÎª¸²Ğ´×´Ì¬
+bool file_close(FILE *stream);//¹Ø±ÕÎÄ¼ş
+struct book *file_on_read(FILE *stream);//¶ÁÈ¡ÎÄ¼ş
+bool file_on_write(struct book *begin,FILE *stream);//Ğ´ÈëÎÄ¼ş
 
 FILE *file_open_read(){
     return fopen("books.dat","r+b");

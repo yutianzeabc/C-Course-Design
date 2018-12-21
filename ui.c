@@ -14,26 +14,26 @@
 extern int index;
 //#define __DEBUG_UI__
 
-void init_console();//åˆå§‹åŒ–æ§åˆ¶å°
-void clear_console();//æ¸…é™¤æ§åˆ¶å°
-void set_console_pos();//è®¾ç½®æ§åˆ¶å°ä½ç½®
-void set_console_cursor();//è®¾ç½®æ§åˆ¶å°å…‰æ ‡çŠ¶æ€
-void draw_main_ui();//ç»˜åˆ¶ä¸»UI
-void draw_load_ui();//ç»˜åˆ¶è¯»å–UI
-void draw_input_ui();//ç»˜åˆ¶è¾“å…¥UI
-void draw_input_sub_ui(int i);//ç»˜åˆ¶è¾“å…¥å­UI
-void draw_output_ui();//ç»˜åˆ¶è¾“å‡ºUI
-void draw_output_sub_ui(int i);//ç»˜åˆ¶è¾“å‡ºå­UI
-void draw_query_ui();//ç»˜åˆ¶æŸ¥è¯¢UI
-void draw_query_sub_ui(int i);//ç»˜åˆ¶æŸ¥è¯¢å­UI
-void draw_modify_ui();//ç»˜åˆ¶ä¿®æ”¹UI
-void draw_modify_sub_ui(int i);//ç»˜åˆ¶ä¿®æ”¹å­UI
-void draw_del_ui();//ç»˜åˆ¶åˆ é™¤UI
-void draw_del_sub_ui();//ç»˜åˆ¶åˆ é™¤å­UI
+void init_console();//³õÊ¼»¯¿ØÖÆÌ¨
+void clear_console();//Çå³ı¿ØÖÆÌ¨
+void set_console_pos();//ÉèÖÃ¿ØÖÆÌ¨Î»ÖÃ
+void set_console_cursor();//ÉèÖÃ¿ØÖÆÌ¨¹â±ê×´Ì¬
+void draw_main_ui();//»æÖÆÖ÷UI
+void draw_load_ui();//»æÖÆ¶ÁÈ¡UI
+void draw_input_ui();//»æÖÆÊäÈëUI
+void draw_input_sub_ui(int i);//»æÖÆÊäÈë×ÓUI
+void draw_output_ui();//»æÖÆÊä³öUI
+void draw_output_sub_ui(int i);//»æÖÆÊä³ö×ÓUI
+void draw_query_ui();//»æÖÆ²éÑ¯UI
+void draw_query_sub_ui(int i);//»æÖÆ²éÑ¯×ÓUI
+void draw_modify_ui();//»æÖÆĞŞ¸ÄUI
+void draw_modify_sub_ui(int i);//»æÖÆĞŞ¸Ä×ÓUI
+void draw_del_ui();//»æÖÆÉ¾³ıUI
+void draw_del_sub_ui();//»æÖÆÉ¾³ı×ÓUI
 
 void init_console(){
     system("mode con: cols=46 lines=21");
-    system("title å›¾ä¹¦ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
+    system("title Í¼ÊéĞÅÏ¢¹ÜÀíÏµÍ³");
     system("color f0");
     set_console_pos();
     set_console_cursor();
@@ -66,21 +66,21 @@ void draw_main_ui(){
     clear_console();
     printf("*============================================*\n");
     printf("*                                            *\n");
-    printf("*               å›¾ä¹¦ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ             *\n");
+    printf("*               Í¼ÊéĞÅÏ¢¹ÜÀíÏµÍ³             *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
     printf("*                                            *\n");
-    printf("*                  [1] å½• å…¥                 *\n");
+    printf("*                  [1] Â¼ Èë                 *\n");
     printf("*                                            *\n");
-    printf("*                  [2] è¾“ å‡º                 *\n");
+    printf("*                  [2] Êä ³ö                 *\n");
     printf("*                                            *\n");
-    printf("*                  [3] æŸ¥ è¯¢                 *\n");
+    printf("*                  [3] ²é Ñ¯                 *\n");
     printf("*                                            *\n");
-    printf("*                  [4] ä¿® æ”¹                 *\n");
+    printf("*                  [4] ĞŞ ¸Ä                 *\n");
     printf("*                                            *\n");
-    printf("*                  [5] åˆ  é™¤                 *\n");
+    printf("*                  [5] É¾ ³ı                 *\n");
     printf("*                                            *\n");
-    printf("*                  [0] é€€ å‡º                 *\n");
+    printf("*                  [0] ÍË ³ö                 *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
     printf("         Please enter your option : ");
@@ -91,7 +91,7 @@ void draw_load_ui(){
     clear_console();
     printf("*============================================*\n");
     printf("*                                            *\n");
-    printf("*               å›¾ä¹¦ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ             *\n");
+    printf("*               Í¼ÊéĞÅÏ¢¹ÜÀíÏµÍ³             *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
     printf("*                                            *\n");
@@ -112,32 +112,32 @@ void draw_load_ui(){
 
 void draw_input_ui(){
     clear_console();
-    printf("è¯·è¾“å…¥æ•°æ®æ¡ç›®æ•°: \n");
+    printf("ÇëÊäÈëÊı¾İÌõÄ¿Êı: \n");
     return;
 }
 
 void draw_input_sub_ui(int i){
     switch (i){
         case 0:
-            printf("ç™»å½•å·: ");
+            printf("µÇÂ¼ºÅ: ");
             return;
         case 1:
-            printf("ä¹¦å: ");
+            printf("ÊéÃû: ");
             return;
         case 2:
-            printf("ä½œè€…å: ");
+            printf("×÷ÕßÃû: ");
             return;
         case 3:
-            printf("åˆ†ç±»å·: ");
+            printf("·ÖÀàºÅ: ");
             return;
         case 4:
-            printf("å‡ºç‰ˆå•ä½: ");
+            printf("³ö°æµ¥Î»: ");
             return;
         case 5:
-            printf("å‡ºç‰ˆæ—¶é—´: ");
+            printf("³ö°æÊ±¼ä: ");
             return;
         case 6:
-            printf("ä»·æ ¼: ");
+            printf("¼Û¸ñ: ");
             return;
         default:
             exit(1);
@@ -152,25 +152,25 @@ void draw_output_ui(){
 void draw_output_sub_ui(int i){
     switch (i){
         case 0:
-            printf("ç™»å½•å·: ");
+            printf("µÇÂ¼ºÅ: ");
             return;
         case 1:
-            printf("ä¹¦åï¼š");
+            printf("ÊéÃû£º");
             return;
         case 2:
-            printf("ä½œè€…å: ");
+            printf("×÷ÕßÃû: ");
             return;
         case 3:
-            printf("åˆ†ç±»å·: ");
+            printf("·ÖÀàºÅ: ");
             return;
         case 4:
-            printf("å‡ºç‰ˆå•ä½: ");
+            printf("³ö°æµ¥Î»: ");
             return;
         case 5:
-            printf("å‡ºç‰ˆæ—¶é—´: ");
+            printf("³ö°æÊ±¼ä: ");
             return;
         case 6:
-            printf("ä»·æ ¼: ");
+            printf("¼Û¸ñ: ");
             return;
         default:
             exit(1);
@@ -181,15 +181,15 @@ void draw_query_ui(){
     clear_console();
     printf("*============================================*\n");
     printf("*                                            *\n");
-    printf("*               å›¾ä¹¦ä¿¡æ¯ç®¡ç†ç³»ç»Ÿ             *\n");
+    printf("*               Í¼ÊéĞÅÏ¢¹ÜÀíÏµÍ³             *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
     printf("*                                            *\n");
-    printf("*                  [1] æ ‡ é¢˜                 *\n");
+    printf("*                  [1] ±ê Ìâ                 *\n");
     printf("*                                            *\n");
-    printf("*                  [2] ä½œ è€…                 *\n");
+    printf("*                  [2] ×÷ Õß                 *\n");
     printf("*                                            *\n");
-    printf("*                  [0] è¿” å›                 *\n");
+    printf("*                  [0] ·µ »Ø                 *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
     printf("         Please enter your option : ");
@@ -200,10 +200,10 @@ void draw_query_sub_ui(int i){
     clear_console();
     switch (i){
         case 0:
-            printf("è¯·è¾“å…¥å›¾ä¹¦æ ‡é¢˜: \n");
+            printf("ÇëÊäÈëÍ¼Êé±êÌâ: \n");
             return;
         case 1:
-            printf("è¯·è¾“å…¥å›¾ä¹¦ä½œè€…: \n");
+            printf("ÇëÊäÈëÍ¼Êé×÷Õß: \n");
             return;
         default:
             exit(1);
@@ -214,32 +214,32 @@ void draw_query_sub_ui(int i){
 
 void draw_modify_ui(){
     clear_console();
-    printf("è¯·è¾“å…¥å›¾ä¹¦ç™»å½•å·: \n");
+    printf("ÇëÊäÈëÍ¼ÊéµÇÂ¼ºÅ: \n");
     return;
 } 
 
 void draw_modify_sub_ui(int i){
     switch (i){
         case 0:
-            printf("ç™»å½•å·: ");
+            printf("µÇÂ¼ºÅ: ");
             return;
         case 1:
-            printf("ä¹¦å: ");
+            printf("ÊéÃû: ");
             return;
         case 2:
-            printf("ä½œè€…å: ");
+            printf("×÷ÕßÃû: ");
             return;
         case 3:
-            printf("åˆ†ç±»å·: ");
+            printf("·ÖÀàºÅ: ");
             return;
         case 4:
-            printf("å‡ºç‰ˆå•ä½: ");
+            printf("³ö°æµ¥Î»: ");
             return;
         case 5:
-            printf("å‡ºç‰ˆæ—¶é—´: ");
+            printf("³ö°æÊ±¼ä: ");
             return;
         case 6:
-            printf("ä»·æ ¼: ");
+            printf("¼Û¸ñ: ");
             return;
         default:
             exit(1);
@@ -248,12 +248,12 @@ void draw_modify_sub_ui(int i){
 
 void draw_del_ui(){
     clear_console();
-    printf("è¯·è¾“å…¥å›¾ä¹¦ç™»å½•å·: \n");
+    printf("ÇëÊäÈëÍ¼ÊéµÇÂ¼ºÅ: \n");
     return;
 }
 
 void draw_del_sub_ui(){
-    printf("ç¡®è®¤åˆ é™¤(Y/N): ");
+    printf("È·ÈÏÉ¾³ı(Y/N): ");
     return;
 }
 

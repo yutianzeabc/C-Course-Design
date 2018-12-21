@@ -87,13 +87,14 @@ void take_in(struct book* start){
     int i;
     for(i=0;i<7;i++){
         if(i==0){
-            for(int i=0;i<20;i++){
+            t->regist[19]='\0';
+            for(int i=0;i<19;i++){
                 t->regist[i]='0';
             }
             int ttt,j=0;
             ttt=index;
             while(ttt!=0){
-                t->regist[19-j]=ttt%10+'0';
+                t->regist[18-j]=ttt%10+'0';
                 ttt/=10;
             }
             index++;
@@ -172,15 +173,19 @@ void quick_sort(struct book *start,struct book *end,int i){
 }
 
 struct book* search_name(struct book* start,char in[]){
-    start=start->forward;
-    while(strcmp(start->name,in)!=0){
-        if(start->forward==NULL){
-            start=start->forward;
+    struct book* t;
+    printf("1");
+    t=start->forward;
+    while(strcmp(t->name,in)!=0){
+        printf("2");
+        if(t->forward==NULL){
+            t=t->forward;
             break;
         }
-        start=start->forward;
+        t=t->forward;
     }
-    return start;
+    printf("done");
+    return t;
 }
 struct book* search_author(struct book* start,char in[]){
     start=start->forward;
@@ -218,6 +223,7 @@ struct book* search_num(struct book* start,int n){
 void show_unit(struct book* t){
     for(int i=0;i<7;i++){
         printf("%s\n",t->quality[i]);
+        printf("yeah!");
     }
     return;
 }
