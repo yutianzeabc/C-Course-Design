@@ -21,7 +21,13 @@ struct book{
     struct book *forward,*back;//Á´±í
     char* quality[7];
 };
-
+int pow(int a,int b){
+    int out=1;
+    while(b--){
+        out*=a;
+    }
+    return out;
+}
 void init_book(struct book* temp){
     temp->quality[0]=(temp->regist);
     temp->quality[1]=(temp->name);
@@ -137,7 +143,7 @@ void swap(struct book* p,struct book *q){
 }
 int cmp(char a[],char b[]){
     int an=0,bn=0;
-    for(int i=19;i>=0;i--){
+    for(int i=19;i>=5;i--){
         an+=(a[i]-'0')*pow(10,19-i);
         bn+=(b[i]-'0')*pow(10,19-i);
     }
@@ -145,8 +151,8 @@ int cmp(char a[],char b[]){
 }
 int cal(char a[]){
     int an=0;
-    for(int i=19;i>=0;i--){
-        an+=(a[i]-'0')*pow(10,19-i);
+    for(int i=18;i>=0;i--){
+        an+=(a[i]-'0')*pow(10,18-i);
     }
     return an;
 }
@@ -177,7 +183,7 @@ struct book* search_name(struct book* start,char in[]){
     //printf("1");
     t=start->forward;
     while(strcmp(t->name,in)!=0){
-        printf("2");
+        //printf("2");
         if(t->forward==NULL){
             t=t->forward;
             break;

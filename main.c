@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
     while (true){
         struct book* ta,*ttt1,*ttt;
         char n[20],s[20];
-        int choice=-1;
+        int choice=-1,nn;
         fflush(stdin);
         scanf("%d",&choice);
         switch (choice){
@@ -105,14 +105,14 @@ int main(int argc, char const *argv[])
                 break;
             case 5:
                 draw_del_ui();
-                scanf("%s",s);
-                ttt1=search_num_str(start,s);
-                for(int i=1;i<7;i++){
-                    draw_input_sub_ui(i);
-                    char u[20];
-                    gets(u);
-                    strcpy(ttt1->quality[i],u);
+                scanf("%d",&nn);
+                ttt1=search_num(start,nn);
+                if(ttt1==NULL){
+                    printf("shit??");
+                    break;
                 }
+                printf("%s",ttt1->name);
+                delete(ttt1);
                 draw_main_ui();
                 break;
             default:
