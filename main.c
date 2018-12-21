@@ -63,21 +63,26 @@ int main(int argc, char const *argv[])
                             break; 
                         case 1:
                             draw_query_sub_ui(0);
+                            fflush(stdin);
                             gets(n);
                             ta=search_name(start,n);
                             if(ta==NULL){
                                 printf("shit!\n");
                             }
                             else show_unit(ta);
+                            getch();
+                            flag=true;
                             break;
                         case 2:
                             draw_query_sub_ui(1);
+                            fflush(stdin);
                             gets(n);
                             ta=search_author(start,n);
                             if(ta==NULL){
                                 printf("shit!\n");
                             }
                             else show_unit(ta);
+                            flag=true;
                             break;
                         default:
                             printf("\a");

@@ -174,7 +174,7 @@ void quick_sort(struct book *start,struct book *end,int i){
 
 struct book* search_name(struct book* start,char in[]){
     struct book* t;
-    printf("1");
+    //printf("1");
     t=start->forward;
     while(strcmp(t->name,in)!=0){
         printf("2");
@@ -184,7 +184,7 @@ struct book* search_name(struct book* start,char in[]){
         }
         t=t->forward;
     }
-    printf("done");
+    //printf("done");
     return t;
 }
 struct book* search_author(struct book* start,char in[]){
@@ -222,8 +222,9 @@ struct book* search_num(struct book* start,int n){
 }
 void show_unit(struct book* t){
     for(int i=0;i<7;i++){
+        draw_output_sub_ui(i);
         printf("%s\n",t->quality[i]);
-        printf("yeah!");
+        //printf("yeah!");
     }
     return;
 }
