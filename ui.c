@@ -12,6 +12,8 @@
     #include <conio.h>
 #endif
 
+#include "type.h"
+
 extern int index;
 
 //#define __DEBUG_UI__
@@ -36,7 +38,7 @@ void draw_modify_ui();//绘制修改UI
 void draw_modify_sub_ui(int i);//绘制修改子UI
 void draw_modify_succeed_ui();//绘制修改成功UI
 void draw_del_ui();//绘制删除UI
-void draw_del_sub_ui();//绘制删除子UI
+void draw_del_comfirm_ui(struct book* target);//绘制删除确认UI
 void draw_del_succeed_ui();//绘制删除成功UI
 
 void init_console(){
@@ -141,7 +143,7 @@ void draw_wait_ui(int i){
 void draw_exception_ui(){
     clear_console();
     printf("目标书籍不存在！\n");
-    draw_wait_ui(1);
+    draw_wait_ui(2);
     return;
 }
 
@@ -293,8 +295,8 @@ void draw_modify_sub_ui(int i){
 
 void draw_modify_succeed_ui(){
     clear_console();
-    printf("目标书籍修改成功！");
-    getch();
+    printf("目标书籍修改成功！\n");
+    draw_wait_ui(2);
     return;
 }
 
@@ -304,16 +306,16 @@ void draw_del_ui(){
     return;
 }
 
-void draw_del_sub_ui(){
-    printf("确认删除(Y/N): ");
+void draw_del_comfirm_ui(struct book* target){
+    printf("目标书籍登录号: %s\n目标书籍标题: %s\n\n确认删除(Y/N): ",target->regist,target->name);
     return;
 }
 
 
 void draw_del_succeed_ui(){
     clear_console();
-    printf("目标书籍删除成功！");
-    getch();
+    printf("目标书籍删除成功！\n");
+    draw_wait_ui(2);
     return;
 }
 
