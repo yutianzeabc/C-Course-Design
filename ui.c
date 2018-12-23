@@ -11,7 +11,9 @@
     #include <winuser.h>
     #include <conio.h>
 #endif
+
 extern int index;
+
 //#define __DEBUG_UI__
 
 void init_console();//初始化控制台
@@ -20,23 +22,29 @@ void set_console_pos();//设置控制台位置
 void set_console_cursor();//设置控制台光标状态
 void draw_main_ui();//绘制主UI
 void draw_load_ui();//绘制读取UI
-void draw_input_ui();//绘制输入UI
-void draw_input_sub_ui(int i);//绘制输入子UI
+void draw_wait_ui(int i);//绘制等待UI
+void draw_exception_ui();//绘制异常UI
+void draw_input_ui();//绘制录入UI
+void draw_input_sub_ui(int i);//绘制录入子UI
+void draw_input_promot_ui(int i,int sum);//绘制录入提示UI
 void draw_output_ui();//绘制输出UI
 void draw_output_sub_ui(int i);//绘制输出子UI
+void draw_output_promot_ui(int i);//绘制输出提示UI
 void draw_query_ui();//绘制查询UI
 void draw_query_sub_ui(int i);//绘制查询子UI
 void draw_modify_ui();//绘制修改UI
 void draw_modify_sub_ui(int i);//绘制修改子UI
+void draw_modify_succeed_ui();//绘制修改成功UI
 void draw_del_ui();//绘制删除UI
 void draw_del_sub_ui();//绘制删除子UI
+void draw_del_succeed_ui();//绘制删除成功UI
 
 void init_console(){
     system("mode con: cols=46 lines=21");
     system("title 图书信息管理系统");
     system("color f0");
-    set_console_pos();
     set_console_cursor();
+    set_console_pos();
     return;
 }
 
@@ -110,9 +118,36 @@ void draw_load_ui(){
     printf("*============================================*\n");
 }
 
+void draw_wait_ui(int i){
+    switch(i){
+        case 0:
+            printf("\n按任意键继续...");
+            getch();
+            clear_console();
+            return;
+        case 1:
+            printf("按任意键退出...");
+            getch();
+            return;
+        case 2:
+            printf("\n按任意键退出...");
+            getch();
+            return;
+        default:
+            exit(1);
+    }
+}
+
+void draw_exception_ui(){
+    clear_console();
+    printf("目标书籍不存在！\n");
+    draw_wait_ui(1);
+    return;
+}
+
 void draw_input_ui(){
     clear_console();
-    printf("请输入数据条目数: \n");
+    printf("请输入数据条目数:\n");
     return;
 }
 
@@ -142,6 +177,11 @@ void draw_input_sub_ui(int i){
         default:
             exit(1);
     }
+}
+
+void draw_input_promot_ui(int i,int sum){
+    printf("---当前录入第%d本，共%d本---\n\n",i+1,sum);
+    return;
 }
 
 void draw_output_ui(){
@@ -175,6 +215,11 @@ void draw_output_sub_ui(int i){
         default:
             exit(1);
     }
+}
+
+void draw_output_promot_ui(int i){
+    printf("---当前输出第%d本---\n\n",i+1);
+    return;
 }
 
 void draw_query_ui(){
@@ -246,6 +291,13 @@ void draw_modify_sub_ui(int i){
     }
 }
 
+void draw_modify_succeed_ui(){
+    clear_console();
+    printf("目标书籍修改成功！");
+    getch();
+    return;
+}
+
 void draw_del_ui(){
     clear_console();
     printf("请输入图书登录号: \n");
@@ -254,6 +306,14 @@ void draw_del_ui(){
 
 void draw_del_sub_ui(){
     printf("确认删除(Y/N): ");
+    return;
+}
+
+
+void draw_del_succeed_ui(){
+    clear_console();
+    printf("目标书籍删除成功！");
+    getch();
     return;
 }
 

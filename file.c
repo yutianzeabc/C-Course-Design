@@ -16,8 +16,8 @@ extern int index;
 FILE *file_open_read();//打开文件为读取状态
 FILE *file_open_write();//打开文件为覆写状态
 bool file_close(FILE *stream);//关闭文件
-struct book *file_on_read(FILE *stream);//读取文件
-bool file_on_write(struct book *begin,FILE *stream);//写入文件
+struct book *file_sync_read(FILE *stream);//读取文件
+bool file_sync_write(struct book *begin,FILE *stream);//写入文件
 
 FILE *file_open_read(){
     return fopen("books.dat","r+b");
@@ -32,7 +32,7 @@ bool file_close(FILE *stream){
     else return false;
 }
 
-struct book *file_on_read(FILE *stream){
+struct book *file_sync_read(FILE *stream){
     struct book *begin=form_new();
     fread(&index,sizeof(int),1,stream);
     while (true){
@@ -48,7 +48,7 @@ struct book *file_on_read(FILE *stream){
     return begin;
 }
 
-bool file_on_write(struct book *begin,FILE *stream){
+bool file_sync_write(struct book *begin,FILE *stream){
     struct book *buffer=begin;
     fwrite(&index,sizeof(int),1,stream);
     while (buffer!=NULL){

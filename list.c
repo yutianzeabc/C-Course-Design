@@ -15,7 +15,9 @@
 #ifdef __DEBUG_LIST__
     #include "ui.c"
 #endif
+
 extern int index;
+
 struct book{
     char regist[20],name[20],author[20],type[20],publish[20],publish_time[20],price[20];
     struct book *forward,*back;//Á´±í
@@ -114,19 +116,23 @@ void take_in(struct book* start){
 }
 //Ìí¼ÓÔªËØ
 void show_list(struct book* start){
+    int num=0;
     start=start->forward;
     while(start->forward!=NULL){
         int j=0;
+        draw_output_promot_ui(num);
+        num++;
         for(j=0;j<7;j++){
             draw_output_sub_ui(j);
             printf("%s\n",start->quality[j]);
         }
-        printf("\n");
         start=start->forward;
+        draw_wait_ui(0);
     }
+    draw_wait_ui(1);
     return;
 }
-//
+
 void swap(struct book* p,struct book *q){
     struct book temp;
     memcpy(&temp,p,sizeof(struct book));
@@ -141,6 +147,7 @@ void swap(struct book* p,struct book *q){
     init_book(q);
     return;
 }
+
 int cmp(char a[],char b[]){
     int an=0,bn=0;
     for(int i=19;i>=5;i--){
@@ -149,13 +156,15 @@ int cmp(char a[],char b[]){
     }
     return an<bn;
 }
+
 int cal(char a[]){
-    int an=0;
+    int ans=0;
     for(int i=18;i>=0;i--){
-        an+=(a[i]-'0')*pow(10,18-i);
+        ans+=(a[i]-'0')*pow(10,18-i);
     }
-    return an;
+    return ans;
 }
+
 void quick_sort(struct book *start,struct book *end,int i){
     if(start->back!=end && start!=end){
         struct book *temp=end,*p=start->back,*q=start;
