@@ -48,7 +48,9 @@ struct book *file_sync_read(FILE *stream){
     fread(&index,sizeof(index),1,stream);
     while (true){
         struct book *buffer=(struct book *)malloc(sizeof(struct book));
-        if (fread(buffer,sizeof(struct book),1,stream)) push_back(buffer,begin);
+        if (fread(buffer,sizeof(struct book),1,stream)==1){
+            push_back(buffer,begin);
+        }
         else {
             free(buffer);
             break;
@@ -58,11 +60,11 @@ struct book *file_sync_read(FILE *stream){
 }
 //FIXME:ÎÄ¼þ¶ÁÐ´ÓÐÎó
 bool file_sync_write(struct book *begin,FILE *stream){
-    struct book *buffer=begin;
+    struct book *buffer=begin->forward;
     fwrite(&index,sizeof(index),1,stream);
     while (buffer!=NULL){
         if (fwrite(buffer,sizeof(struct book),1,stream)!=1) return false; 
-        buffer=buffer->back;
+        buffer=buffer->forward;
     }
     return true;
 }
