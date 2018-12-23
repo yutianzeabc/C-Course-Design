@@ -1,18 +1,4 @@
-#ifndef __STD_H__
-    #define __STD_H__
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <stdbool.h>
-#endif
-
-#ifndef __WIN_H__
-    #define __WIN_H__  
-    #include <windows.h>
-    #include <winuser.h>
-    #include <conio.h>
-#endif
-
-#include "type.h"
+#include "base.h"
 
 extern int index;
 

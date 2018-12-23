@@ -1,7 +1,7 @@
 # Program Datebase
 *.dat
 
-# Visual Code
+# Visual Studio Code
 .vscode/
 
 # Prerequisites

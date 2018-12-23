@@ -1,4 +1,4 @@
-#include "type.h"
+#include "base.h"
 #include "ui.c"
 #include "opt.c"
 #include "file.c"
