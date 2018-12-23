@@ -10,19 +10,16 @@
     #include <string.h>  
 #endif
 
-//#define __DEBUG_LIST__
+#include "type.h"
 
-#ifdef __DEBUG_LIST__
+//#define __DEBUG_OPT__
+
+#ifdef __DEBUG_OPT__
     #include "ui.c"
 #endif
 
 extern int index;
 
-struct book{
-    char regist[20],name[20],author[20],type[20],publish[20],publish_time[20],price[20];
-    struct book *forward,*back;//Á´±í
-    char* quality[7];
-};
 int pow(int a,int b){
     int out=1;
     while(b--){
@@ -243,7 +240,7 @@ void show_unit(struct book* t){
     }
     return;
 }
-#ifdef __DEBUG_LIST__
+#ifdef __DEBUG_OPT__
 int main(int argc, char const *argv[])
 {
     struct book *start,*end,*t,*t1;

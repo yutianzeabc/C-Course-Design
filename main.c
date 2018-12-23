@@ -1,5 +1,6 @@
+#include "type.h"
 #include "ui.c"
-#include "list.c"
+#include "opt.c"
 #include "file.c"
 
 int index=0;
@@ -27,8 +28,13 @@ int main(int argc, char const *argv[])
         scanf("%d",&choice);
         switch (choice){
             case 0: 
-                file_close(fp);
-                return 0;
+                fp=file_open_write();
+                if (fp!=NULL){
+                    file_sync_write(start,fp);
+                    file_close(fp);
+                    exit(0);
+                }
+                else exit(-1);
             case 1:
                 draw_input_ui();
                 int num=-1;
@@ -99,6 +105,8 @@ int main(int argc, char const *argv[])
                         default:
                             printf("\a");
                             draw_query_ui();
+                            fflush(stdin);
+                            scanf("%d",&choice);
                     }
                 }
                 draw_main_ui();
@@ -130,6 +138,7 @@ int main(int argc, char const *argv[])
             case 5:
                 draw_del_ui();
                 int d_target=-1;
+                char opt='X';
                 while(d_target==-1){
                     fflush(stdin);
                     draw_del_ui();
@@ -143,11 +152,24 @@ int main(int argc, char const *argv[])
                     draw_main_ui();
                     break;
                 }
-                printf("%s",temp->name);
-                delete(temp);
-                draw_del_succeed_ui();
-                draw_main_ui();
-                break;
+                while((opt!='Y'&&opt!='y')&&(opt!='N'&&opt!='n')){
+                    fflush(stdin);
+                    clear_console();
+                    draw_del_comfirm_ui(temp);
+                    scanf("%c",&opt);
+                    fflush(stdin);
+                } 
+                if (opt=='Y'||opt=='y'){
+                    delete(temp);
+                    draw_del_succeed_ui();
+                    draw_main_ui();
+                    break;
+                }
+                else if (opt=='N'||opt=='n') {
+                    draw_main_ui();
+                    break;
+                }
+                else exit(2);
             default:
                 printf("\a");
                 draw_main_ui();
