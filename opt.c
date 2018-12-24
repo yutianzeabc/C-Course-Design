@@ -188,6 +188,7 @@ struct book* search_name(struct book* start,char in[]){
     //printf("done");
     return t;
 }
+
 struct book* search_author(struct book* start,char in[]){
     start=start->forward;
     while(strcmp(start->author,in)!=0){
@@ -199,6 +200,7 @@ struct book* search_author(struct book* start,char in[]){
     }
     return start;
 }
+
 struct book* search_num_str(struct book* start,char in[]){
     start=start->forward;
     while(strcmp(start->regist,in)!=0){
@@ -210,6 +212,7 @@ struct book* search_num_str(struct book* start,char in[]){
     }
     return start;
 }
+
 struct book* search_num(struct book* start,int n){
     start=start->forward;
     while(cal(start->regist)!=n){
@@ -221,6 +224,7 @@ struct book* search_num(struct book* start,int n){
     }
     return start;
 }
+
 void show_unit(struct book* t){
     for(int i=0;i<7;i++){
         draw_output_sub_ui(i);
@@ -229,6 +233,7 @@ void show_unit(struct book* t){
     }
     return;
 }
+
 #ifdef __DEBUG_OPT__
 int main(int argc, char const *argv[])
 {

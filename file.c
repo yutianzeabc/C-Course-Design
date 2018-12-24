@@ -34,7 +34,7 @@ struct book *file_sync_read(FILE *stream){
     fread(&index,sizeof(index),1,stream);
     while (true){
         struct book *buffer=(struct book *)malloc(sizeof(struct book));
-        if (fread(buffer,sizeof(struct book),1,stream)==1){
+        if ((fread(buffer,sizeof(struct book),1,stream)==1)&&(buffer->forward!=NULL)){
             //FIXME:ÎÄ¼þ¶ÁÐ´ÓÐÎó
             init_book(buffer);
             push_back(buffer,begin);
@@ -55,6 +55,12 @@ bool file_sync_write(struct book *begin,FILE *stream){
         buffer=buffer->forward;
     }
     return true;
+}
+
+bool file_sync_remove(){
+    char* data="books.dat";
+    if (remove(data)==0) return true;
+    return false;
 }
 
 #ifdef __DEBUG_FILE__

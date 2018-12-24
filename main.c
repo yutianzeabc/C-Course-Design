@@ -34,7 +34,10 @@ int main(int argc, char const *argv[])
                     file_close(fp);
                     exit(0);
                 }
-                else exit(-1);
+                else {
+                    draw_file_error_ui();
+                    exit(-1);
+                }
             case 1:
                 draw_input_ui();
                 int num=-1;
@@ -55,6 +58,14 @@ int main(int argc, char const *argv[])
             case 2:
                 draw_output_ui();
                 show_list(start);
+                fp=file_open_write();
+                if (fp!=NULL){
+                    file_sync_write(start,fp);
+                    file_close(fp);
+                }
+                else {
+                    draw_file_error_ui();
+                }
                 draw_main_ui();
                 break;
             case 3:
@@ -82,9 +93,13 @@ int main(int argc, char const *argv[])
                                 draw_exception_ui();
                             }
                             else {
-                                show_unit(temp);
-                                draw_wait_ui(2);
+                                while(temp!=NULL){
+                                    show_unit(temp);
+                                    draw_wait_ui(0);
+                                    temp=search_name(temp,s);
+                                }
                             }
+                            draw_wait_ui(1);
                             flag=true;
                             break;
                         case 2:
@@ -97,9 +112,13 @@ int main(int argc, char const *argv[])
                                 draw_exception_ui();
                             }
                             else {
-                                show_unit(temp);
-                                draw_wait_ui(2);
+                                while(temp!=NULL){
+                                    show_unit(temp);
+                                    draw_wait_ui(0);
+                                    temp=search_author(temp,s);
+                                }
                             }
+                            draw_wait_ui(1);
                             flag=true;
                             break;
                         default:
@@ -169,7 +188,12 @@ int main(int argc, char const *argv[])
                     draw_main_ui();
                     break;
                 }
-                else exit(2);
+            case 9:
+                if (file_sync_remove()) {
+                    draw_file_remove_ui();
+                }
+                draw_main_ui();
+                break;
             default:
                 printf("\a");
                 draw_main_ui();
