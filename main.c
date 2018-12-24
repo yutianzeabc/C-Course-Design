@@ -191,6 +191,7 @@ int main(int argc, char const *argv[])
             case 9:
                 if (file_sync_remove()) {
                     draw_file_remove_ui();
+                    exit(0);
                 }
                 draw_main_ui();
                 break;
