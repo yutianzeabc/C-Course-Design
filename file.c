@@ -15,6 +15,7 @@ FILE *file_open_write();//打开文件为覆写状态
 bool file_close(FILE *stream);//关闭文件
 struct book *file_sync_read(FILE *stream);//读取文件
 bool file_sync_write(struct book *begin,FILE *stream);//写入文件
+bool file_sync_remove();//删除文件
 
 FILE *file_open_read(){
     return fopen("books.dat","rb");
@@ -35,7 +36,6 @@ struct book *file_sync_read(FILE *stream){
     while (true){
         struct book *buffer=(struct book *)malloc(sizeof(struct book));
         if ((fread(buffer,sizeof(struct book),1,stream)==1)&&(buffer->forward!=NULL)){
-            //FIXME:文件读写有误
             init_book(buffer);
             push_back(buffer,begin);
         }

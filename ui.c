@@ -26,7 +26,8 @@ void draw_modify_succeed_ui();//绘制修改成功UI
 void draw_del_ui();//绘制删除UI
 void draw_del_comfirm_ui(struct book* target);//绘制删除确认UI
 void draw_del_succeed_ui();//绘制删除成功UI
-void draw_error_file_ui();//绘制文件错误UI
+void draw_file_remove_ui();//绘制文件删除UI
+void draw_file_error_ui();//绘制文件错误UI
 
 void init_console(){
     system("mode con: cols=46 lines=21");
