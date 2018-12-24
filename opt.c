@@ -8,7 +8,7 @@
 
 extern int index;
 
-int pow(int a,int b){
+int ipow(int a,int b){
     int out=1;
     while(b--){
         out*=a;
@@ -137,8 +137,8 @@ void swap(struct book* p,struct book *q){
 int cmp(char a[],char b[]){
     int an=0,bn=0;
     for(int i=19;i>=5;i--){
-        an+=(a[i]-'0')*pow(10,19-i);
-        bn+=(b[i]-'0')*pow(10,19-i);
+        an+=(a[i]-'0')*ipow(10,19-i);
+        bn+=(b[i]-'0')*ipow(10,19-i);
     }
     return an<bn;
 }
@@ -146,7 +146,7 @@ int cmp(char a[],char b[]){
 int cal(char a[]){
     int ans=0;
     for(int i=18;i>=0;i--){
-        ans+=(a[i]-'0')*pow(10,18-i);
+        ans+=(a[i]-'0')*ipow(10,18-i);
     }
     return ans;
 }
@@ -175,17 +175,14 @@ void quick_sort(struct book *start,struct book *end,int i){
 
 struct book* search_name(struct book* start,char in[]){
     struct book* t;
-    //printf("1");
     t=start->forward;
     while(strcmp(t->name,in)!=0){
-        //printf("2");
         if(t->forward==NULL){
             t=t->forward;
             break;
         }
         t=t->forward;
     }
-    //printf("done");
     return t;
 }
 
@@ -229,7 +226,6 @@ void show_unit(struct book* t){
     for(int i=0;i<7;i++){
         draw_output_sub_ui(i);
         printf("%s\n",t->quality[i]);
-        //printf("yeah!");
     }
     return;
 }

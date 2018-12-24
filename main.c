@@ -98,8 +98,8 @@ int main(int argc, char const *argv[])
                                     draw_wait_ui(0);
                                     temp=search_name(temp,s);
                                 }
+                                draw_wait_ui(1);
                             }
-                            draw_wait_ui(1);
                             flag=true;
                             break;
                         case 2:
@@ -117,8 +117,8 @@ int main(int argc, char const *argv[])
                                     draw_wait_ui(0);
                                     temp=search_author(temp,s);
                                 }
+                                draw_wait_ui(1);
                             }
-                            draw_wait_ui(1);
                             flag=true;
                             break;
                         default:
