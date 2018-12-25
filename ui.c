@@ -6,7 +6,7 @@ extern int index;
 
 void init_console();//初始化控制台
 void clear_console();//清除控制台
-void set_console_pos();//设置控制台位置
+void set_console_rect();//设置控制台外观和位置
 void set_console_cursor();//设置控制台光标状态
 void draw_main_ui();//绘制主UI
 void draw_load_ui();//绘制读取UI
@@ -34,7 +34,7 @@ void init_console(){
     system("title 图书信息管理系统");
     system("color f0");
     set_console_cursor();
-    set_console_pos();
+    set_console_rect();
     return;
 }
 
@@ -43,12 +43,13 @@ void clear_console(){
     return;
 }
 
-void set_console_pos(){
+void set_console_rect(){
     RECT rect;
-    HWND hwnd=FindWindow("ConsoleWindowClass",NULL);
+    HWND hwnd=GetConsoleWindow();
     int scr_width=GetSystemMetrics(SM_CXSCREEN);
     int scr_height=GetSystemMetrics(SM_CYSCREEN);
     GetWindowRect(hwnd,&rect);
+    SetWindowLongPtr(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX & ~WS_MINIMIZEBOX);
     SetWindowPos(hwnd,HWND_TOPMOST,(scr_width-rect.right)/2,(scr_height-rect.bottom)/2,rect.right-rect.left,rect.bottom-rect.top,SWP_SHOWWINDOW);
 }
 
