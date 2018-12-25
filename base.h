@@ -7,7 +7,6 @@
     #include <stdbool.h>
 #endif
 
-
 #ifndef __WIN_H__
     #define __WIN_H__  
     #include <windows.h>
@@ -19,6 +18,8 @@
     #define __STR_H__
     #include <string.h>  
 #endif
+
+#define FILENAME "books.dat"
 
 struct book{
     char regist[20],name[20],author[20],type[20],publish[20],publish_time[20],price[20];

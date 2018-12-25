@@ -9,14 +9,13 @@ int main(int argc, char const *argv[])
 {   
     init_console();
     draw_load_ui();
-    FILE* fp;
     struct book* start;
-    fp=file_open_read();
+    FILE* fp=file_open_read();
     if (fp!=NULL){
         start=file_sync_read(fp);
         file_close(fp);
     }
-    else{
+    else {
         start=form_new();
     }
     draw_main_ui();
@@ -93,7 +92,7 @@ int main(int argc, char const *argv[])
                                 draw_exception_ui();
                             }
                             else {
-                                while(temp!=NULL){
+                                while (temp!=NULL){
                                     show_unit(temp);
                                     draw_wait_ui(0);
                                     temp=search_name(temp,s);
@@ -112,7 +111,7 @@ int main(int argc, char const *argv[])
                                 draw_exception_ui();
                             }
                             else {
-                                while(temp!=NULL){
+                                while (temp!=NULL){
                                     show_unit(temp);
                                     draw_wait_ui(0);
                                     temp=search_author(temp,s);
@@ -133,7 +132,7 @@ int main(int argc, char const *argv[])
             case 4:
                 draw_modify_ui();
                 int m_target=-1;
-                while(m_target==-1){
+                while (m_target==-1){
                     fflush(stdin);
                     draw_modify_ui();
                     scanf("%d",&m_target);
@@ -141,12 +140,12 @@ int main(int argc, char const *argv[])
                 }
                 clear_console();
                 temp=search_num(start,m_target);
-                if(temp==NULL){
+                if (temp==NULL){
                     draw_exception_ui();
                     draw_main_ui();
                     break;
                 }
-                for(int i=1;i<7;i++){
+                for (int i=1;i<7;i++){
                     draw_input_sub_ui(i);
                     gets(s);
                     strcpy(temp->quality[i],s);
@@ -158,7 +157,7 @@ int main(int argc, char const *argv[])
                 draw_del_ui();
                 int d_target=-1;
                 char opt='X';
-                while(d_target==-1){
+                while (d_target==-1){
                     fflush(stdin);
                     draw_del_ui();
                     scanf("%d",&d_target);
@@ -166,12 +165,12 @@ int main(int argc, char const *argv[])
                 }
                 clear_console();
                 temp=search_num(start,d_target);
-                if(temp==NULL){
+                if (temp==NULL){
                     draw_exception_ui();
                     draw_main_ui();
                     break;
                 }
-                while((opt!='Y'&&opt!='y')&&(opt!='N'&&opt!='n')){
+                while ((opt!='Y'&&opt!='y')&&(opt!='N'&&opt!='n')){
                     fflush(stdin);
                     clear_console();
                     draw_del_comfirm_ui(temp);
@@ -189,7 +188,7 @@ int main(int argc, char const *argv[])
                     break;
                 }
             case 9:
-                if (file_sync_remove()) {
+                if (file_remove()) {
                     draw_file_remove_ui();
                     exit(0);
                 }
