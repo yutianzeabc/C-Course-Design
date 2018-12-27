@@ -2,8 +2,6 @@
 
 extern int index;
 
-//#define __DEBUG_UI__
-
 void init_console();//初始化控制台
 void clear_console();//清除控制台
 void set_console_rect();//设置控制台外观和位置
@@ -322,12 +320,10 @@ void draw_file_error_ui(){
     return;
 }
 
+//#define __DEBUG_UI__
 #ifdef __DEBUG_UI__
 int main(int argc, char const *argv[])
 {
-    init_console();
-    draw_main_ui();
-    getchar();
     return 0;
 }   
 #endif

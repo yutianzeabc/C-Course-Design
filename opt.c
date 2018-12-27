@@ -1,11 +1,5 @@
 #include "base.h"
 
-//#define __DEBUG_OPT__
-
-#ifdef __DEBUG_OPT__
-    #include "ui.c"
-#endif
-
 extern int index;
 
 int ipow(int a,int b){
@@ -230,20 +224,10 @@ void show_unit(struct book* t){
     return;
 }
 
+//#define __DEBUG_OPT__
 #ifdef __DEBUG_OPT__
 int main(int argc, char const *argv[])
 {
-    struct book *start,*end,*t,*t1;
-    start=form_new();
-    int i=0;
-    for(i=0;i<10;i++){
-        take_in(start);
-    }
-    end=get_end(start);
-    t=start->forward;t1=end->back;
-    quick_sort(t,t1,0);
-    show_list(start);
-    getchar();
     return 0;
 }   
 #endif

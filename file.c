@@ -1,12 +1,5 @@
 #include "base.h"
 
-//#define __DEBUG_FILE__
-
-#ifdef __DEBUG_FILE__
-    #include "ui.c"
-    #include "opt.c"
-#endif
-
 extern int index;
 
 FILE *file_open_read();//打开文件为读取状态
@@ -62,11 +55,10 @@ bool file_sync_write(struct book *begin,FILE *stream){
     return true;
 }
 
+//#define __DEBUG_FILE__
 #ifdef __DEBUG_FILE__
 int main(int argc, char const *argv[])
 {
-    FILE *book_db;
-    book_db=file_open_read();
     return 0;
 }
 #endif
