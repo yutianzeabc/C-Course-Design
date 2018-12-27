@@ -80,7 +80,7 @@ void draw_main_ui(){
     printf("*                  [0] ÍË ³ö                 *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
-    printf("         Please enter your option : ");
+    printf("          Please enter your option : ");
     return;
 }
 
@@ -226,7 +226,7 @@ void draw_query_ui(){
     printf("*                  [0] ·µ »Ø                 *\n");
     printf("*                                            *\n");
     printf("*============================================*\n");
-    printf("         Please enter your option : ");
+    printf("          Please enter your option : ");
     return;
 }
 
