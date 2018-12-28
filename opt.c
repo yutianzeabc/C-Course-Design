@@ -2,6 +2,25 @@
 
 extern int index;
 
+int ipow(int a,int b);//计算阶乘
+void init_book(struct book* target);//初始化结构体属性指针数组
+struct book* form_new();//构建空链表，返回入口
+void combine(struct book *from,struct book *to,struct book *new_book);//连接节点到链表
+struct book* get_end(struct book* start);//获取链表末端
+void push_back(struct book* new_book,struct book* start);//追加节点到链表尾部
+void delete(struct book* target);//删除链表目标节点
+void take_in(struct book* start);//读取并构造一个新节点，追加到链表尾部
+void show_unit(struct book* target);//输出目标节点信息
+void show_list(struct book* start);//遍历输出链表所有节点信息
+void swap(struct book* p,struct book* q);//交换链表中的两个节点
+int cmp(char a[],char b[]);//数据比较函数
+int cal(char a[]);//数据类型转换函数
+void quick_sort(struct book *start,struct book *end,int i);//进行链表快速排序
+struct book* search_name(struct book* start,char in[]);//查询匹配目标标题的所有节点
+struct book* search_author(struct book* start,char in[]);//查询匹配目标作者的所有节点
+struct book* search_num(struct book* start,int n);//查询匹配注册号(数字)的节点
+struct book* search_num_str(struct book* start,char in[]);//查询匹配注册号(字符串)的节点
+
 int ipow(int a,int b){
     int out=1;
     while(b--){
@@ -10,14 +29,14 @@ int ipow(int a,int b){
     return out;
 }
 
-void init_book(struct book* temp){
-    temp->quality[0]=(temp->regist);
-    temp->quality[1]=(temp->name);
-    temp->quality[2]=(temp->author);
-    temp->quality[3]=(temp->type);
-    temp->quality[4]=(temp->publish);
-    temp->quality[5]=(temp->publish_time);
-    temp->quality[6]=(temp->price);
+void init_book(struct book* target){
+    target->quality[0]=(target->regist);
+    target->quality[1]=(target->name);
+    target->quality[2]=(target->author);
+    target->quality[3]=(target->type);
+    target->quality[4]=(target->publish);
+    target->quality[5]=(target->publish_time);
+    target->quality[6]=(target->price);
     return;
 }
 
@@ -32,7 +51,6 @@ struct book* form_new(){
     end->forward=NULL;
     return start;
 }
-//构建一个空链表，并返回入口
 
 void combine(struct book *from,struct book *to,struct book *new_book){
     from->forward=new_book;
@@ -41,24 +59,21 @@ void combine(struct book *from,struct book *to,struct book *new_book){
     new_book->forward=to;
     return;
 }
-//插入元素到链表
 
 struct book* get_end(struct book* start){
-    struct book* temp=start->forward;
-    while(temp->forward!=NULL){
-        temp=temp->forward;
+    struct book* target=start->forward;
+    while(target->forward!=NULL){
+        target=target->forward;
     }
-    return temp;
+    return target;
 }
-//获取链表的末端
 
 void push_back(struct book* new_book,struct book* start){
-    struct book* temp;
-    temp=get_end(start);
-    combine(temp->back,temp,new_book);
+    struct book* target;
+    target=get_end(start);
+    combine(target->back,target,new_book);
     return;
 }
-//在末尾添加一个元素
 
 void delete(struct book* target){
     (target->back)->forward=target->forward;
@@ -66,7 +81,6 @@ void delete(struct book* target){
     free(target);
     return;
 }
-//删除链表的一个元素
 
 void take_in(struct book* start){
     struct book *t;
@@ -79,11 +93,11 @@ void take_in(struct book* start){
             for(int i=0;i<19;i++){
                 t->regist[i]='0';
             }
-            int ttt,j=0;
-            ttt=index;
-            while(ttt!=0){
-                t->regist[18-j]=ttt%10+'0';
-                ttt/=10;
+            int tnum,j=0;
+            tnum=index;
+            while(tnum!=0){
+                t->regist[18-j]=tnum%10+'0';
+                tnum/=10;
             }
             index++;
             continue;
@@ -94,7 +108,15 @@ void take_in(struct book* start){
     push_back(t,start);
     return;
 }
-//添加元素
+
+void show_unit(struct book* target){
+    for(int i=0;i<7;i++){
+        draw_output_sub_ui(i);
+        printf("%s\n",target->quality[i]);
+    }
+    return;
+}
+
 void show_list(struct book* start){
     int num=0;
     start=start->forward;
@@ -113,17 +135,17 @@ void show_list(struct book* start){
     return;
 }
 
-void swap(struct book* p,struct book *q){
-    struct book temp;
-    memcpy(&temp,p,sizeof(struct book));
-    init_book(&temp);
-    temp.forward = q->forward;
-    temp.back = q->back;
+void swap(struct book* p,struct book* q){
+    struct book target;
+    memcpy(&target,p,sizeof(struct book));
+    init_book(&target);
+    target.forward = q->forward;
+    target.back = q->back;
     q->forward = p->forward;
     q->back = p->back;
     memcpy(p,q,sizeof(struct book));//*p = *q;
     init_book(p);
-    memcpy(q,&temp,sizeof(struct book));//*q = temp;
+    memcpy(q,&target,sizeof(struct book));//*q = target;
     init_book(q);
     return;
 }
@@ -147,20 +169,20 @@ int cal(char a[]){
 
 void quick_sort(struct book *start,struct book *end,int i){
     if(start->back!=end && start!=end){
-        struct book *temp=end,*p=start->back,*q=start;
+        struct book *target=end,*p=start->back,*q=start;
         while(q!=end){
-            if(strcmp(q->quality[i],temp->quality[i])<=0 && i!=0){
+            if(strcmp(q->quality[i],target->quality[i])<=0 && i!=0){
                 p=p->forward;
                 swap(p,q);
             }
-            else if(i==0 && cmp(q->quality[i],temp->quality[i])<=0){
+            else if(i==0 && cmp(q->quality[i],target->quality[i])<=0){
                 p=p->forward;
                 swap(p,q);
             }
             q=q->forward;
         }
         p=p->forward;
-        swap(p,temp);
+        swap(p,target);
         quick_sort(start,p->back,i);
         quick_sort(p->forward,end,i);
     }
@@ -192,18 +214,6 @@ struct book* search_author(struct book* start,char in[]){
     return start;
 }
 
-struct book* search_num_str(struct book* start,char in[]){
-    start=start->forward;
-    while(strcmp(start->regist,in)!=0){
-        if(start->forward==NULL){
-            start=start->forward;
-            break;
-        }
-        start=start->forward;
-    }
-    return start;
-}
-
 struct book* search_num(struct book* start,int n){
     start=start->forward;
     while(cal(start->regist)!=n){
@@ -216,12 +226,16 @@ struct book* search_num(struct book* start,int n){
     return start;
 }
 
-void show_unit(struct book* t){
-    for(int i=0;i<7;i++){
-        draw_output_sub_ui(i);
-        printf("%s\n",t->quality[i]);
+struct book* search_num_str(struct book* start,char in[]){
+    start=start->forward;
+    while(strcmp(start->regist,in)!=0){
+        if(start->forward==NULL){
+            start=start->forward;
+            break;
+        }
+        start=start->forward;
     }
-    return;
+    return start;
 }
 
 //#define __DEBUG_OPT__
