@@ -23,8 +23,7 @@ bool file_close(FILE *stream){
 }
 
 bool file_remove(){
-    char* data=FILENAME;
-    if (remove(data)==0) return true;
+    if (remove(FILENAME)==0) return true;
     return false;
 }
 
