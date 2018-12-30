@@ -1,23 +1,12 @@
 #pragma once
 
-#ifndef __STD_H__
-    #define __STD_H__
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <stdbool.h>
-#endif
-
-#ifndef __WIN_H__
-    #define __WIN_H__  
-    #include <windows.h>
-    #include <winuser.h>
-    #include <conio.h>
-#endif
-
-#ifndef __STR_H__
-    #define __STR_H__
-    #include <string.h>  
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <windows.h>
+#include <winuser.h>
+#include <conio.h>
 
 #define FILENAME "books.dat"
 
