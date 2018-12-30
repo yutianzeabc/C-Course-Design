@@ -5,8 +5,8 @@ extern int index;
 int ipow(int a,int b);//计算阶乘
 void init_book(struct book* target);//初始化结构体属性指针数组
 struct book* form_new();//构建空链表，返回入口
-void combine(struct book *from,struct book *to,struct book *new_book);//连接节点到链表
 struct book* get_end(struct book* start);//获取链表末端
+void combine(struct book *from,struct book *to,struct book *new_book);//连接节点到链表
 void push_back(struct book* new_book,struct book* start);//追加节点到链表尾部
 void delete(struct book* target);//删除链表目标节点
 void take_in(struct book* start);//读取并构造一个新节点，追加到链表尾部
